@@ -1,5 +1,5 @@
 {
-  "questions": [
+  "section1": [
     {
       "question": "Which hormone regulates blood sugar by lowering glucose levels?",
       "options": ["A. Glucagon", "B. Cortisol", "C. Insulin", "D. Adrenaline"],
@@ -87,6 +87,195 @@
         "C. Pivot joint",
         "D. Gliding joint"
       ],
+      "correctOption": 1,
+      "points": 10
+    }
+  ],
+  "section2": [
+    {
+      "question": "Which structure connects muscles to bones?",
+      "options": ["A. Ligaments", "B. Cartilage", "C. Tendons", "D. Fascia"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "What is the largest organ in the human body?",
+      "options": ["A. Liver", "B. Brain", "C. Skin", "D. Lungs"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which type of blood cells are responsible for fighting infections?",
+      "options": [
+        "A. Red blood cells",
+        "B. White blood cells",
+        "C. Platelets",
+        "D. Plasma cells"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Where is the sinoatrial (SA) node located?",
+      "options": [
+        "A. Right atrium",
+        "B. Left atrium",
+        "C. Right ventricle",
+        "D. Left ventricle"
+      ],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "Which organ produces bile?",
+      "options": ["A. Pancreas", "B. Liver", "C. Gallbladder", "D. Stomach"],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which type of joint is found between the vertebrae?",
+      "options": [
+        "A: Hinge joint",
+        "B: Pivot joint",
+        "C: Gliding joint",
+        "D: Saddle joint"
+      ],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which part of the nephron is responsible for filtration of blood?",
+      "options": [
+        "A: Loop of Henle",
+        "B: Distal convoluted tubule",
+        "C: Proximal convoluted tubule",
+        "D: Glomerulus"
+      ],
+      "correctOption": 3,
+      "points": 10
+    },
+    {
+      "question": "The pacemaker of the heart is:",
+      "options": [
+        "A: AV node",
+        "B: SA node",
+        "C: Bundle of His",
+        "D: Purkinje fibers"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which type of tissue lines the respiratory tract?",
+      "options": [
+        "A: Simple squamous epithelium",
+        "B: Ciliated columnar epithelium",
+        "C: Stratified squamous epithelium",
+        "D: Cuboidal epithelium"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which structure prevents food from entering the trachea?",
+      "options": ["A: Uvula", "B: Pharynx", "C: Epiglottis", "D: Larynx"],
+      "correctOption": 2,
+      "points": 10
+    }
+  ],
+  "section3": [
+    {
+      "question": "Which part of the brain controls balance and coordination?",
+      "options": [
+        "A: Cerebrum",
+        "B: Cerebellum",
+        "C: Medulla oblongata",
+        "D: Hypothalamus"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "What is the normal pH of human blood?",
+      "options": [
+        "A: 6.8 – 7.0",
+        "B: 7.35 – 7.45",
+        "C: 7.5 – 8.0",
+        "D: 6.5 – 6.8"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which part of the digestive system is mainly responsible for nutrient absorption?",
+      "options": [
+        "A: Stomach",
+        "B: Small intestine",
+        "C: Large intestine",
+        "D: Esophagus"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which blood group is considered the universal donor?",
+      "options": ["A: A+", "B: B+", "C: O-", "D: AB+"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "The myelin sheath around neurons functions to:",
+      "options": [
+        "A: Produce neurotransmitters",
+        "B: Protect neurons from injury",
+        "C: Increase speed of nerve impulses",
+        "D: Supply nutrients to neurons"
+      ],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which vitamin is essential for calcium absorption?",
+      "options": [
+        "A: Vitamin A",
+        "B: Vitamin D",
+        "C: Vitamin C",
+        "D: Vitamin K"
+      ],
+      "correctOption": 1,
+      "points": 10
+    },
+    {
+      "question": "Which valve is located between the left atrium and left ventricle?",
+      "options": [
+        "A: Tricuspid valve",
+        "B: Pulmonary valve",
+        "C: Mitral (bicuspid) valve",
+        "D: Aortic valve"
+      ],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which cranial nerve is responsible for vision?",
+      "options": [
+        "A: Optic nerve (CN II)",
+        "B: Oculomotor nerve (CN III)",
+        "C: Trigeminal nerve (CN V)",
+        "D: Facial nerve (CN VII)"
+      ],
+      "correctOption": 0,
+      "points": 10
+    },
+    {
+      "question": "Which structure stores and concentrates bile?",
+      "options": ["A: Pancreas", "B: Liver", "C: Gallbladder", "D: Duodenum"],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "The functional unit of the lung is the:",
+      "options": ["A: Bronchiole", "B: Alveolus", "C: Trachea", "D: Pleura"],
       "correctOption": 1,
       "points": 10
     }
