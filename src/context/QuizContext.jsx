@@ -9,9 +9,9 @@ const initialState = {
   section1: {
     questions: data.section1,
     index: 0,
-    points: 0,
-    answer: null,
-    addedPoints: false,
+    answer: [],
+    userAnswer: [],
+    isCorrect: [],
     secondsremaining: null,
   },
   section2: {
@@ -19,6 +19,8 @@ const initialState = {
     index: 0,
     points: 0,
     answer: null,
+    userAnswer: [],
+    isCorrect: [],
     addedPoints: false,
     secondsremaining: null,
   },
@@ -27,6 +29,8 @@ const initialState = {
     index: 0,
     points: 0,
     answer: null,
+    userAnswer: [],
+    isCorrect: [],
     addedPoints: false,
     secondsremaining: null,
   },
@@ -37,21 +41,24 @@ function reducer(state, action) {
     case 'new_answer': {
       const question =
         state[action.section].questions[state[action.section].index];
+      const updatedAnswers = [...state[action.section].userAnswer];
+      const userAnswer = action.payload.selectedIndex;
+      const selectedOption = question.options[userAnswer];
       const correctAnswer =
         action.payload.selectedIndex === question.correctOption;
+      const totalCorrectAnswer = [...state[action.section].isCorrect];
+      updatedAnswers[state[action.section].index] = selectedOption;
+      totalCorrectAnswer[state[action.section].index] = correctAnswer;
+      const answerList = [...state[action.section].answer];
+      answerList[state[action.section].index] = action.payload.selectedIndex;
       return {
         ...state,
         [action.section]: {
           ...state[action.section],
-          answer: action.payload.selectedIndex,
-          points:
-            correctAnswer && !state[action.section].addedPoints
-              ? state[action.section].points + question.points
-              : state[action.section].points,
-          addedPoints:
-            correctAnswer && !state[action.section].addedPoints
-              ? true
-              : state[action.section].addedPoints,
+          // answer: answer[] action.payload.selectedIndex,
+          answer: answerList,
+          userAnswer: updatedAnswers,
+          isCorrect: totalCorrectAnswer,
         },
       };
     }
@@ -62,13 +69,23 @@ function reducer(state, action) {
         [action.section]: {
           ...state[action.section],
           index: state[action.section].index + 1,
-          answer: null,
-          addedPoints: false,
+          // answer: null,
+        },
+      };
+
+    case 'PREVIOUS_QUESTION':
+      return {
+        ...state,
+        [action.section]: {
+          ...state[action.section],
+          index: state[action.section].index - 1,
+          // answer: null,
         },
       };
 
     case 'show_points': {
       const numQuestions = state[action.section].questions?.length;
+
       return {
         ...state,
         [action.section]: {

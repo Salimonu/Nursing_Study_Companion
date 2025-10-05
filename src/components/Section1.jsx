@@ -5,41 +5,13 @@ import { useQuiz } from '../hooks/useQuiz';
 
 function QuizScreen() {
   const { section1, dispatch } = useQuiz();
-
+  const correctCount = section1.isCorrect.filter(ans => ans === true).length;
+  console.log(section1.answer);
   const numQuestions = section1.questions.length;
   const totalPoints = section1.questions.reduce(
     (prev, question) => prev + question.points,
     0
   );
-
-  // const questions = data.questions1;
-
-  // const [index, setIndex] = useState(0);
-  // const [points, setPoints] = useState(0);
-  // const [answer, setAnswer] = useState(null);
-  // const [addedPoints, setAddedPoints] = useState(false);
-
-  // const numQuestions = questions?.length;
-
-  // function handleNext() {
-  //   setIndex(index => index + 1);
-  //   setAnswer(null);
-  //   setAddedPoints(false);
-  // }
-
-  // function handleAnswer(selectedIndex) {
-  //   setAnswer(selectedIndex);
-  //   const question = questions[index];
-  //   const correctAnswer = selectedIndex === question.correctOption;
-  //   if (correctAnswer && !addedPoints) {
-  //     setPoints(points => points + question.points);
-  //     setAddedPoints(true);
-  //   }
-  // }
-
-  // function handleShowPoints() {
-  //   setIndex(index => index + numQuestions);
-  // }
 
   return (
     <>
@@ -72,7 +44,11 @@ function QuizScreen() {
       </div>
 
       {section1.index > numQuestions - 1 ? (
-        <ScoreBoard points={section1.points} totalPoints={totalPoints} />
+        <ScoreBoard
+          points={section1.points}
+          correctCount={correctCount}
+          totalPoints={totalPoints}
+        />
       ) : (
         <div>
           <div className="lg:flex justify-between gap-8 mb-4">
@@ -98,9 +74,8 @@ function QuizScreen() {
                       },
                     })
                   }
-                  // onClick={() => handleAnswer(i)}
                   className={`${
-                    i === section1.answer
+                    i === section1.answer?.at(section1.index)
                       ? 'bg-blue-500 border-blue-500 text-white font-bold'
                       : ''
                   } text-left w-[55%] text-xl border-1 pl-4 pr-4 mb-2 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200`}
@@ -114,15 +89,27 @@ function QuizScreen() {
             {section1.answer !== null ? (
               <p className="">
                 {section1.index < numQuestions - 1 ? (
-                  <button
-                    onClick={() =>
-                      dispatch({ type: 'next_question', section: 'section1' })
-                    }
-                    // onClick={handleNext}
-                    className="border-1 px-4 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200"
-                  >
-                    Next &rarr;{' '}
-                  </button>
+                  <>
+                    <button
+                      onClick={() =>
+                        dispatch({
+                          type: 'PREVIOUS_QUESTION',
+                          section: 'section1',
+                        })
+                      }
+                      className="border-1 px-4 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200"
+                    >
+                      Previous &rarr;{' '}
+                    </button>
+                    <button
+                      onClick={() =>
+                        dispatch({ type: 'next_question', section: 'section1' })
+                      }
+                      className="border-1 px-4 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200"
+                    >
+                      Next &rarr;{' '}
+                    </button>
+                  </>
                 ) : (
                   <button
                     onClick={() =>
