@@ -8,9 +8,7 @@ import { QuizProvider } from './context/QuizContext.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <QuizProvider>
-        <App />
-      </QuizProvider>
+      <App />
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
 import Feedback from './feedback';
+import { useEffect } from 'react';
+import { getQuestions } from '../api/questionsAPI';
 
 function WelcomeScreen() {
   return (

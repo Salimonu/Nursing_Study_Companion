@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Which hormone regulates blood sugar by lowering glucose levels?",
+    "options": ["A. Glucagon", "B. Cortisol", "C. Insulin", "D. Adrenaline"],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "What is the main function of red blood cells?",
+    "options": [
+      "A. Blood clotting",
+      "B. Fighting infections",
+      "C. Transporting oxygen",
+      "D. Producing hormones"
+    ],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "Which chamber of the heart pumps oxygenated blood to the rest of the body?",
+    "options": [
+      "A. Right atrium",
+      "B. Right ventricle",
+      "C. Left atrium",
+      "D. Left ventricle"
+    ],
+    "correctOption": 3,
+    "points": 10
+  },
+  {
+    "question": "What is the functional unit of the kidney?",
+    "options": ["A. Nephron", "B. Alveolus", "C. Neuron", "D. Glomerulus"],
+    "correctOption": 0,
+    "points": 10
+  },
+  {
+    "question": "Which part of the nervous system is responsible for involuntary actions like heartbeat and digestion?",
+    "options": [
+      "A. Somatic nervous system",
+      "B. Autonomic nervous system",
+      "C. Central nervous system",
+      "D. Peripheral nervous system"
+    ],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Gas exchange in the lungs occurs in which structure?",
+    "options": ["A. Trachea", "B. Bronchi", "C. Alveoli", "D. Pleura"],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "Which muscle is the primary muscle of respiration?",
+    "options": [
+      "A. Intercostal muscles",
+      "B. Diaphragm",
+      "C. Sternocleidomastoid",
+      "D. Pectoralis major"
+    ],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Which blood vessels carry blood away from the heart?",
+    "options": ["A. Veins", "B. Arteries", "C. Capillaries", "D. Venules"],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Which lobe of the brain is responsible for vision?",
+    "options": [
+      "A. Frontal lobe",
+      "B. Parietal lobe",
+      "C. Temporal lobe",
+      "D. Occipital lobe"
+    ],
+    "correctOption": 3,
+    "points": 10
+  },
+  {
+    "question": "Which type of joint is the shoulder joint?",
+    "options": [
+      "A. Hinge joint",
+      "B. Ball and socket joint",
+      "C. Pivot joint",
+      "D. Gliding joint"
+    ],
+    "correctOption": 1,
+    "points": 10
+  }
+]

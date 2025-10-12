@@ -1,75 +1,80 @@
 import { createContext, useReducer } from 'react';
-import data from '../data/questions.json';
+// import { getQuestions } from '../api/questionsAPI';
+// import { useQuery } from '@tanstack/react-query';
+import Loader from '../components/Loader';
 
-const QuizContext = createContext();
-
-const SECS_PER_QUESTION = 60;
+const SECS_PER_QUESTION = 30;
 
 const initialState = {
   section1: {
-    questions: data.section1,
+    questions: [],
     index: 0,
-    answer: [],
+    answerIndexes: [],
     userAnswer: [],
     isCorrect: [],
+    status: ''
     secondsremaining: null,
   },
   section2: {
-    questions: data.section2,
+    questions: [],
     index: 0,
-    points: 0,
-    answer: null,
+    answerIndexes: [],
     userAnswer: [],
     isCorrect: [],
-    addedPoints: false,
     secondsremaining: null,
   },
   section3: {
-    questions: data.section3,
+    questions: [],
     index: 0,
-    points: 0,
-    answer: null,
+    answerIndexes: [],
     userAnswer: [],
     isCorrect: [],
-    addedPoints: false,
     secondsremaining: null,
   },
 };
 
-function reducer(state, action) {
+function quizReducer(state, action) {
   switch (action.type) {
-    case 'new_answer': {
-      const question =
-        state[action.section].questions[state[action.section].index];
-      const updatedAnswers = [...state[action.section].userAnswer];
-      const userAnswer = action.payload.selectedIndex;
-      const selectedOption = question.options[userAnswer];
-      const correctAnswer =
-        action.payload.selectedIndex === question.correctOption;
-      const totalCorrectAnswer = [...state[action.section].isCorrect];
-      updatedAnswers[state[action.section].index] = selectedOption;
-      totalCorrectAnswer[state[action.section].index] = correctAnswer;
-      const answerList = [...state[action.section].answer];
-      answerList[state[action.section].index] = action.payload.selectedIndex;
+    case 'DATA_RECEIVED':
       return {
         ...state,
         [action.section]: {
           ...state[action.section],
-          // answer: answer[] action.payload.selectedIndex,
-          answer: answerList,
+          questions: action.payload,
+        },
+      };
+
+    case 'NEW_ANSWER': {
+      const question =
+        state[action.section].questions[state[action.section].index];
+      const userAnswer = action.payload.selectedIndex;
+      const selectedOption = question.options[userAnswer];
+      const updatedAnswers = [...state[action.section].userAnswer];
+      const correctAnswer = userAnswer === question.correct_option;
+      const totalCorrectAnswer = [...state[action.section].isCorrect];
+      const answerList = [...state[action.section].answerIndexes];
+
+      totalCorrectAnswer[state[action.section].index] = correctAnswer;
+      updatedAnswers[state[action.section].index] = selectedOption;
+      answerList[state[action.section].index] = userAnswer;
+
+      return {
+        ...state,
+        [action.section]: {
+          ...state[action.section],
+          answerIndexes: answerList,
           userAnswer: updatedAnswers,
           isCorrect: totalCorrectAnswer,
         },
       };
     }
 
-    case 'next_question':
+    case 'NEXT_QUESTION':
       return {
         ...state,
         [action.section]: {
           ...state[action.section],
           index: state[action.section].index + 1,
-          // answer: null,
         },
       };
 
@@ -78,8 +83,10 @@ function reducer(state, action) {
         ...state,
         [action.section]: {
           ...state[action.section],
-          index: state[action.section].index - 1,
-          // answer: null,
+          index:
+            state[action.section].index > 0
+              ? state[action.section].index - 1
+              : state[action.section].index,
         },
       };
 
@@ -97,39 +104,29 @@ function reducer(state, action) {
 
     case 'RESTART':
       return {
-        ...initialState,
+        ...state,
+        [action.section]: {
+          ...state[action.section],
+          index: 0,
+          answerIndexes: [],
+          userAnswer: [],
+          isCorrect: [],
+          secondsremaining: null,
+        },
       };
+
     default:
       throw new Error('Action Unknown');
   }
 }
 
+const QuizContext = createContext();
+
 function QuizProvider({ children }) {
   const [{ section1, section2, section3 }, dispatch] = useReducer(
-    reducer,
+    quizReducer,
     initialState
   );
-
-  // const sectionQuestions1 = data.questions1;
-  // const sectionQuestions2 = data.questions2;
-  // const sectionQuestions3 = data.questions3;
-
-  // const numQuestionsSection1 = sectionQuestions1?.length;
-  // const numQuestionsSection2 = sectionQuestions2?.length;
-  // const numQuestionsSection3 = sectionQuestions3?.length;
-
-  // const totalPointsSection1 = sectionQuestions1?.reduce(
-  //   (prev, question) => prev + question.points,
-  //   0
-  // );
-  // const totalPointsSection2 = sectionQuestions2?.reduce(
-  //   (prev, question) => prev + question.points,
-  //   0
-  // );
-  // const totalPointsSection3 = sectionQuestions3?.reduce(
-  //   (prev, question) => prev + question.points,
-  //   0
-  // );
 
   return (
     <>

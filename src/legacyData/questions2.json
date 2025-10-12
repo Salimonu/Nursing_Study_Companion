@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Which structure connects muscles to bones?",
+    "options": ["A. Ligaments", "B. Cartilage", "C. Tendons", "D. Fascia"],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "What is the largest organ in the human body?",
+    "options": ["A. Liver", "B. Brain", "C. Skin", "D. Lungs"],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "Which type of blood cells are responsible for fighting infections?",
+    "options": [
+      "A. Red blood cells",
+      "B. White blood cells",
+      "C. Platelets",
+      "D. Plasma cells"
+    ],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Where is the sinoatrial (SA) node located?",
+    "options": [
+      "A. Right atrium",
+      "B. Left atrium",
+      "C. Right ventricle",
+      "D. Left ventricle"
+    ],
+    "correctOption": 0,
+    "points": 10
+  },
+  {
+    "question": "Which organ produces bile?",
+    "options": ["A. Pancreas", "B. Liver", "C. Gallbladder", "D. Stomach"],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Which type of joint is found between the vertebrae?",
+    "options": [
+      "A: Hinge joint",
+      "B: Pivot joint",
+      "C: Gliding joint",
+      "D: Saddle joint"
+    ],
+    "correctOption": 2,
+    "points": 10
+  },
+  {
+    "question": "Which part of the nephron is responsible for filtration of blood?",
+    "options": [
+      "A: Loop of Henle",
+      "B: Distal convoluted tubule",
+      "C: Proximal convoluted tubule",
+      "D: Glomerulus"
+    ],
+    "correctOption": 3,
+    "points": 10
+  },
+  {
+    "question": "The pacemaker of the heart is:",
+    "options": [
+      "A: AV node",
+      "B: SA node",
+      "C: Bundle of His",
+      "D: Purkinje fibers"
+    ],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Which type of tissue lines the respiratory tract?",
+    "options": [
+      "A: Simple squamous epithelium",
+      "B: Ciliated columnar epithelium",
+      "C: Stratified squamous epithelium",
+      "D: Cuboidal epithelium"
+    ],
+    "correctOption": 1,
+    "points": 10
+  },
+  {
+    "question": "Which structure prevents food from entering the trachea?",
+    "options": ["A: Uvula", "B: Pharynx", "C: Epiglottis", "D: Larynx"],
+    "correctOption": 2,
+    "points": 10
+  }
+]
