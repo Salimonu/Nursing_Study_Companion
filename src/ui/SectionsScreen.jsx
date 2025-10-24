@@ -17,16 +17,11 @@ function SectionsScreen() {
           <h2 className="text-center text-4xl pb-4 text-blue-800 font-bold uppercase">
             Anatomy and Physiology
           </h2>
-          {/* <h2 className="uppercase text-4xl text-center mt-20">👋 welcome</h2> */}
+
           <Link to="/">
             <span className=" py-2 mb-4 text-2xl font-semibold cursor-pointer hover:underline">
               Home-
             </span>
-
-            {/* {' '}
-            <button className="mb-4 text-2xl py-1 px-2 rounded-lg bg-blue-300 font-semibold text-white cursor-pointer hover:bg-blue-600">
-              Home{' '}
-            </button>{' '} */}
           </Link>
           <span className="mb-4 text-2xl font-semibold ">Sections</span>
 
@@ -67,28 +62,6 @@ function SectionsScreen() {
       <div className="mt-8">
         <Outlet />
       </div>
-
-      {/* -----------------------------------
-        <Link to="Section1">
-          <button className="bg-blue-500 py-2 px-4 hover:bg-blue-800 rounded text-white uppercase text-2xl font-semibold">
-            Section 1
-          </button>
-        </Link>
-        <Link to="Section2">
-          <button className="bg-blue-500 py-2 px-4 hover:bg-blue-800 rounded text-white uppercase text-2xl font-semibold">
-            Section 2
-          </button>
-        </Link>
-        <Link to="Section3">
-          <button className="bg-blue-500 py-2 px-4 hover:bg-blue-800 rounded text-white uppercase text-2xl font-semibold">
-            Section 3
-          </button>
-        </Link>
-      </div>
-
-      <div className="mt-8">
-        <Outlet />
-      </div> */}
     </>
   );
 }

@@ -71,12 +71,6 @@ function QuestionCard({ section }) {
             My Score &rarr;{' '}
           </Button>
         ) : (
-          // <button
-          //   onClick={() => dispatch({ type: 'show_points', section: section })}
-          //   className={btnStyleFill}
-          // >
-          //   My Score &rarr;{' '}
-          // </button>
           ''
         )}
         <Timer />

@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react';
 // import { getQuestions } from '../api/questionsAPI';
 // import { useQuery } from '@tanstack/react-query';
-import Loader from '../components/Loader';
+import Loader from '../ui/Loader';
 
 const SECS_PER_QUESTION = 30;
 
@@ -12,8 +12,9 @@ const initialState = {
     answerIndexes: [],
     userAnswer: [],
     isCorrect: [],
-    status: ''
     secondsremaining: null,
+    // 'loading', 'error', 'ready', 'active', 'finished'
+    status: 'loading',
   },
   section2: {
     questions: [],
@@ -22,6 +23,7 @@ const initialState = {
     userAnswer: [],
     isCorrect: [],
     secondsremaining: null,
+    status: 'loading',
   },
   section3: {
     questions: [],
@@ -30,6 +32,7 @@ const initialState = {
     userAnswer: [],
     isCorrect: [],
     secondsremaining: null,
+    status: 'loading',
   },
 };
 
@@ -41,6 +44,18 @@ function quizReducer(state, action) {
         [action.section]: {
           ...state[action.section],
           questions: action.payload,
+          status: 'ready',
+        },
+      };
+
+    case 'START':
+      return {
+        ...state,
+        [action.section]: {
+          ...state[action.section],
+          status: 'active',
+          secondsremaining:
+            state[action.section]?.questions?.length * SECS_PER_QUESTION,
         },
       };
 

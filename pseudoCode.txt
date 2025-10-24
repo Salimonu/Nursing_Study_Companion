@@ -1,0 +1,37 @@
+# Categories : use Accordion
+__General: onClick=> open the nav
+Section1 10questions each
+Section2
+Section3
+
+__Systems onClick=> open the nav
+Nervous System: use Accordion: onClick=> open the nav
+Section 1 10questions each
+Section 2
+Section 3 etc
+Cardiovascular System
+Circulatory System
+Respiratory System
+Musculoskeletal system etc
+
+
+To open section; Write a function to update the state in a callback
+f openQuestions(){
+SetOpensection()}
+
+Call the function with the section number
+openQuestions(section1)
+
+
+# StartPage
+Category
+Start button
+
+
+# QuizPage  __6
+Navbar
+QuestionCard
+Timer ⏲️
+Previous btn
+Next btn/ Submit btn
+Restart btn

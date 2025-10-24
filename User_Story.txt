@@ -1,0 +1,67 @@
+User Story
+
+# The user lands on homepage
+# The user signs up or logs in
+# The user lands on profile page
+# The user selects a category
+# The user clicks start button 
+# The timer ⏲️ starts running 
+# Question 1 is displayed
+# The user clicks next button to move to other questions
+# After the user answers the last question; check score btn appears
+# User clicks submit btn to reveal Result Page 
+# Yes? User clicks feedback btn; feedback page shows
+# User submits feedback
+# No? User lands on profile page
+
+
+# Homepage 
+- Test questions 10
+- signUp & login btns
+
+# Sign up page
+
+# Login page
+
+# Profile page
+- Username
+- User performance
+- Categories
+
+# Categories
+__General
+Section1 10questions each
+Section2
+Section3
+
+__Systems
+Nervous System:
+Section 1 10questions each
+Section 2
+Section 3 etc
+Cardiovascular System
+Circulatory System
+Respiratory System
+Musculoskeletal system etc
+
+
+# StartPage
+Category
+Start button
+
+
+# QuizPage  __6
+Navbar
+QuestionCard
+Timer ⏲️
+Previous btn
+Next btn/ Submit btn
+Restart btn
+
+
+# ResultPage: 
+score,
+total possible points,
+percentage score,
+grade (>80%: Distinction, >65%: Credit, >=50%: Pass. <50%: You can do better!)
+feedback btn
