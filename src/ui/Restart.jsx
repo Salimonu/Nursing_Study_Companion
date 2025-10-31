@@ -1,4 +1,4 @@
-import { useQuiz } from '../hooks/useQuizContext';
+import { useQuiz } from '../hooks/useQuiz';
 import Button from './Button';
 
 function Restart({ section }) {

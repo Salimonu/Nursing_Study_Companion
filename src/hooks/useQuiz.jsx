@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { QuizContext } from '../context/QuizContext';
 
-function useQuiz() {
+export function useQuiz() {
   const context = useContext(QuizContext);
 
   if (context === undefined)
@@ -9,5 +9,3 @@ function useQuiz() {
 
   return context;
 }
-
-export { useQuiz };

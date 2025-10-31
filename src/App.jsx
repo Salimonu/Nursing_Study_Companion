@@ -19,6 +19,7 @@ import SignUpPage from './pages/SignUpPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import ProtectedRoute from './ui/ProtectedRoute.jsx';
 import { AuthSyncWrapper } from './features/Authentication/useAuthSync.jsx';
+import QuizPage from './pages/QuizPage.jsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,8 @@ function App() {
           >
             <Route index element={<Navigate replace to="profile" />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile/quiz" element={<QuizPage />} />
+
             <Route path="sections" element={<SectionsScreen />}>
               <Route path="section1" element={<Section1 />} />
               <Route path="section2" element={<Section2 />} />

@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import ScoreBoard from './ScoreBoard';
 import Restart from './Restart';
-import { useQuiz } from '../hooks/useQuizContext';
+import { useQuiz } from '../hooks/useQuiz';
 import { useQuery } from '@tanstack/react-query';
 import { getQuestions } from '../api/questionsAPI';
 import Loader from './Loader';
@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import Error from './Error';
 import Timer from './Timer';
 import Button from './Button';
+import Logout from '@/features/Authentication/Logout';
 
 function QuestionCard({ section }) {
   const { dispatch, ...quizState } = useQuiz();
@@ -23,7 +24,7 @@ function QuestionCard({ section }) {
     answerIndexes,
     userAnswer,
     isCorrect,
-    secondsremaining,
+    secondsLeft,
   } = quizState[section];
 
   const correctCount = isCorrect.filter(ans => ans === true).length;
@@ -73,7 +74,7 @@ function QuestionCard({ section }) {
         ) : (
           ''
         )}
-        <Timer />
+        <Timer section={section} />
       </div>
 
       {index > numQuestions - 1 ? (
@@ -145,6 +146,7 @@ function QuestionCard({ section }) {
                       Next &rarr;{' '}
                     </button>
                     <Restart section={section} />
+                    <Logout />
                   </>
                 ) : (
                   <>

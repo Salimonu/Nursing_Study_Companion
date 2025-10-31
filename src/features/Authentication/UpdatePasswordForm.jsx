@@ -10,6 +10,7 @@ import {
   Input,
   Button,
   FormHelperText,
+  Spinner,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
@@ -100,9 +101,7 @@ function UpdatePasswordForm() {
           w="30%"
           ml="20px"
           mt="20px"
-          onClick={() => {
-            navigate('/homepage');
-          }}
+          onClick={reset}
           variation="secondary"
         >
           Cancel

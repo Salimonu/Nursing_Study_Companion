@@ -12,7 +12,7 @@ const initialState = {
     answerIndexes: [],
     userAnswer: [],
     isCorrect: [],
-    secondsremaining: null,
+    secondsLeft: 0,
     // 'loading', 'error', 'ready', 'active', 'finished'
     status: 'loading',
   },
@@ -45,6 +45,8 @@ function quizReducer(state, action) {
           ...state[action.section],
           questions: action.payload,
           status: 'ready',
+          secondsLeft:
+            state[action.section]?.questions?.length * SECS_PER_QUESTION,
         },
       };
 
@@ -54,7 +56,7 @@ function quizReducer(state, action) {
         [action.section]: {
           ...state[action.section],
           status: 'active',
-          secondsremaining:
+          secondsLeft:
             state[action.section]?.questions?.length * SECS_PER_QUESTION,
         },
       };
@@ -135,9 +137,9 @@ function quizReducer(state, action) {
   }
 }
 
-const QuizContext = createContext();
+export const QuizContext = createContext();
 
-function QuizProvider({ children }) {
+export function QuizProvider({ children }) {
   const [{ section1, section2, section3 }, dispatch] = useReducer(
     quizReducer,
     initialState
@@ -151,5 +153,3 @@ function QuizProvider({ children }) {
     </>
   );
 }
-
-export { QuizContext, QuizProvider };

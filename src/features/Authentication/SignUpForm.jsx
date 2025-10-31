@@ -185,14 +185,7 @@ function SignUpForm() {
               'Submit'
             )}
           </Button>
-          <Button
-            w="30%"
-            ml="20px"
-            mt="20px"
-            onClick={() => {
-              navigate('/homepage');
-            }}
-          >
+          <Button w="30%" ml="20px" mt="20px" onClick={reset}>
             Cancel
           </Button>
         </Box>

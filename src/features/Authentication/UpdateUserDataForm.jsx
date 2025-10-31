@@ -39,7 +39,6 @@ function UpdateUserDataForm() {
       {
         onSuccess: () => {
           setAvatar('');
-          setWhatsapp('');
           e.target.reset();
         },
       }
@@ -49,7 +48,7 @@ function UpdateUserDataForm() {
   function handleCancel() {
     setFullName(currentFullName);
     setAvatar('');
-    setWhatsapp('');
+    setWhatsapp(currentWhatsapp || '');
   }
 
   return (
