@@ -1,4 +1,4 @@
-import ScoreBoard from './ScoreBoard';
+// import ScoreBoard from './ScoreBoard';
 
 import { useQuiz } from '../hooks/useQuiz';
 import { useQuery } from '@tanstack/react-query';
@@ -44,11 +44,12 @@ function QuestionCard({ section }) {
   return (
     <>
       {index > numQuestions - 1 ? (
-        <ScoreBoard
-          correctCount={correctCount}
-          numQuestions={numQuestions}
-          section={section}
-        />
+        // <ScoreBoard
+        //   correctCount={correctCount}
+        //   numQuestions={numQuestions}
+        //   section={section}
+        // />
+        <div></div>
       ) : (
         <div>
           <div className="lg:flex justify-between gap-8 mb-4">
