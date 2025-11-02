@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Container } from '@chakra-ui/react';
+
 import { useSearchParams } from 'react-router-dom';
 
 import Button from '@/ui/Button';

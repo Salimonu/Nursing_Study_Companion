@@ -1,4 +1,3 @@
-import QuestionCard from '../ui/QuestionCard';
 import { Box, Container, Spacer, Text } from '@chakra-ui/react';
 import { Link } from 'react-router';
 
