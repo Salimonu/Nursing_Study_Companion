@@ -1,31 +1,57 @@
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 import { useQuiz } from '@/hooks/useQuiz';
 import Button from './Button';
 
 function Timer({ section }) {
   const { dispatch, section1, section2, section3 } = useQuiz();
-  let duration;
-  if (section === 'section1') {
-    duration = section1.secondsLeft;
-  }
+  const navigate = useNavigate();
 
-  if (section === 'section2') {
-    duration = section2.secondsLeft;
-  }
+  const sectionState =
+    section === 'section1'
+      ? section1
+      : section === 'section2'
+      ? section2
+      : section3;
 
-  if (section === 'section3') {
-    duration = section3.secondsLeft;
-  }
+  const { secondsLeft, status } = sectionState;
+  //  && status !== 'running'
+  useEffect(() => {
+    // if (status === 'finished') return;
+    console.log(status);
+    const tick = setInterval(() => dispatch({ type: 'TICK', section }), 1000);
 
-  const minutes = Math.floor(duration / 60);
-  const seconds = duration % 60;
+    return () => clearInterval(tick);
+  }, [dispatch, section, status]);
+
+  // End quiz and navigate to results page when time hits 0
+  useEffect(() => {
+    if (secondsLeft === 0 && status === 'finished') {
+      dispatch({ type: 'show_points', section });
+
+      // Delay navigation slightly to allow state update
+      setTimeout(() => {
+        navigate(`results?section=${section}`);
+      }, 500);
+    }
+  }, [secondsLeft, dispatch, section, status, navigate]);
+
+  const minutes = Math.floor(secondsLeft / 60);
+  const seconds = secondsLeft % 60;
 
   const btnStyleFill =
-    'border-1 px-4 py-2 text-2xl rounded-3xl text-white font-bold bg-blue-500 border-blue-500';
+    'flex justify-between border-1 px-4 py-2 text-2xl rounded-3xl text-white font-bold bg-blue-500 border-blue-500';
+  const day = new Date();
   return (
     <Button style={btnStyleFill}>
-      {`${minutes.toString().padStart(2, 0)} : ${seconds
-        .toString()
-        .padStart(2, 0)}`}
+      <span>{day.toLocaleString()}</span>
+      <span className="bg-white text-blue-800 px-4 rounded-r-3xl">
+        Time Left:{' '}
+        {`${minutes.toString().padStart(2, 0)} : ${seconds
+          .toString()
+          .padStart(2, 0)}`}
+      </span>
     </Button>
   );
 }

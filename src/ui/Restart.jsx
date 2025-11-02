@@ -10,7 +10,10 @@ function Restart({ section }) {
     <div className="text-center">
       <Button
         style={style}
-        onclick={() => dispatch({ type: 'RESTART', section })}
+        onClick={() => {
+          console.log('restart btn clicked');
+          dispatch({ type: 'RESTART', section });
+        }}
       >
         Restart
       </Button>

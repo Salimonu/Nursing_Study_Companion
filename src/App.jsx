@@ -1,11 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-
-import { QuizProvider } from './context/QuizContext.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import { QuizProvider } from './context/QuizContext.jsx';
+import { AuthSyncWrapper } from './features/Authentication/useAuthSync.jsx';
 import './App.css';
 
+import ProtectedRoute from './ui/ProtectedRoute.jsx';
 import Header from './ui/Header';
 import AppLayout from './ui/AppLayout.jsx';
 import SectionsScreen from './ui/SectionsScreen';
@@ -17,9 +18,8 @@ import ProfilePage from './pages/ProfilePage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
-import ProtectedRoute from './ui/ProtectedRoute.jsx';
-import { AuthSyncWrapper } from './features/Authentication/useAuthSync.jsx';
 import QuizPage from './pages/QuizPage.jsx';
+import ResultPage from './pages/ResultPage.jsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -51,6 +51,7 @@ function App() {
             <Route index element={<Navigate replace to="profile" />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/quiz" element={<QuizPage />} />
+            <Route path="profile/quiz/results" element={<ResultPage />} />
 
             <Route path="sections" element={<SectionsScreen />}>
               <Route path="section1" element={<Section1 />} />

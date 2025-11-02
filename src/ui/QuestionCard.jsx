@@ -15,16 +15,13 @@ function QuestionCard({ section }) {
   const { dispatch, ...quizState } = useQuiz();
   const btnStyleOutline =
     'border-1 px-4 py-1 rounded-3xl font-semibold cursor-pointer hover:bg-blue-200 hover:border-blue-200';
-  const btnStyleFill =
-    'border-1 px-4 py-2 text-2xl rounded-3xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400';
 
   const {
     questions,
     index,
     answerIndexes,
-    userAnswer,
+
     isCorrect,
-    secondsLeft,
   } = quizState[section];
 
   const correctCount = isCorrect.filter(ans => ans === true).length;
@@ -50,33 +47,6 @@ function QuestionCard({ section }) {
   if (error) return <Error />;
   return (
     <>
-      <h2 className="text-center text-4xl pb-4 text-blue-800 font-bold uppercase">
-        Anatomy and Physiology
-      </h2>
-      <div className="flex justify-between mb-10">
-        <div className="py-2 text-2xl font-semibold">
-          <Link to="/">
-            <span className="hover:underline">Home-</span>
-          </Link>
-          <Link to="/sections">
-            <span className="hover:underline">Sections-</span>
-          </Link>
-          <span className="mb-4 text-2xl font-semibold ">{section}</span>
-        </div>
-
-        {index ? (
-          <Button
-            style={btnStyleFill}
-            onclick={() => dispatch({ type: 'show_points', section: section })}
-          >
-            My Score &rarr;{' '}
-          </Button>
-        ) : (
-          ''
-        )}
-        <Timer section={section} />
-      </div>
-
       {index > numQuestions - 1 ? (
         <ScoreBoard
           correctCount={correctCount}
@@ -145,8 +115,6 @@ function QuestionCard({ section }) {
                     >
                       Next &rarr;{' '}
                     </button>
-                    <Restart section={section} />
-                    <Logout />
                   </>
                 ) : (
                   <>
@@ -167,7 +135,6 @@ function QuestionCard({ section }) {
                     >
                       My Score &rarr;{' '}
                     </button>
-                    <Restart section={section} />
                   </>
                 )}
               </div>

@@ -1,84 +1,82 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 // import { getQuestions } from '../api/questionsAPI';
 // import { useQuery } from '@tanstack/react-query';
 import Loader from '../ui/Loader';
 
-const SECS_PER_QUESTION = 30;
+const SECS_PER_QUESTION = 60;
+
+const sectionState = {
+  questions: [],
+  index: 0,
+  answerIndexes: [],
+  userAnswer: [],
+  isCorrect: [],
+  secondsLeft: 0,
+  // 'loading', 'error', 'ready', 'active', running, 'finished'
+  status: 'loading',
+};
 
 const initialState = {
-  section1: {
-    questions: [],
-    index: 0,
-    answerIndexes: [],
-    userAnswer: [],
-    isCorrect: [],
-    secondsLeft: 0,
-    // 'loading', 'error', 'ready', 'active', 'finished'
-    status: 'loading',
-  },
-  section2: {
-    questions: [],
-    index: 0,
-    answerIndexes: [],
-    userAnswer: [],
-    isCorrect: [],
-    secondsremaining: null,
-    status: 'loading',
-  },
-  section3: {
-    questions: [],
-    index: 0,
-    answerIndexes: [],
-    userAnswer: [],
-    isCorrect: [],
-    secondsremaining: null,
-    status: 'loading',
-  },
+  section1: sectionState,
+  section2: sectionState,
+  section3: sectionState,
 };
 
 function quizReducer(state, action) {
+  const current = state[action.section];
+
   switch (action.type) {
     case 'DATA_RECEIVED':
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
+          ...current,
           questions: action.payload,
           status: 'ready',
-          secondsLeft:
-            state[action.section]?.questions?.length * SECS_PER_QUESTION,
+          secondsLeft: action.payload.length * SECS_PER_QUESTION,
         },
       };
 
-    case 'START':
+    case 'START': {
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
+          ...current,
           status: 'active',
-          secondsLeft:
-            state[action.section]?.questions?.length * SECS_PER_QUESTION,
+          secondsLeft: current.questions.length * SECS_PER_QUESTION,
         },
       };
+    }
+    case 'TICK': {
+      const newSeconds = Math.max(current?.secondsLeft - 1, 0);
+
+      return {
+        ...state,
+        [action.section]: {
+          ...current,
+          secondsLeft: newSeconds,
+          status: newSeconds === 0 ? 'finished' : 'running',
+        },
+      };
+    }
 
     case 'NEW_ANSWER': {
-      const question =
-        state[action.section].questions[state[action.section].index];
+      const question = current.questions[current.index];
       const userAnswer = action.payload.selectedIndex;
       const selectedOption = question.options[userAnswer];
-      const updatedAnswers = [...state[action.section].userAnswer];
+      const updatedAnswers = [...current.userAnswer];
       const correctAnswer = userAnswer === question.correct_option;
-      const totalCorrectAnswer = [...state[action.section].isCorrect];
-      const answerList = [...state[action.section].answerIndexes];
+      const totalCorrectAnswer = [...current.isCorrect];
+      const answerList = [...current.answerIndexes];
 
-      totalCorrectAnswer[state[action.section].index] = correctAnswer;
-      updatedAnswers[state[action.section].index] = selectedOption;
-      answerList[state[action.section].index] = userAnswer;
+      totalCorrectAnswer[current.index] = correctAnswer;
+      updatedAnswers[current.index] = selectedOption;
+      answerList[current.index] = userAnswer;
 
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
+          ...current,
           answerIndexes: answerList,
           userAnswer: updatedAnswers,
           isCorrect: totalCorrectAnswer,
@@ -90,8 +88,8 @@ function quizReducer(state, action) {
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
-          index: state[action.section].index + 1,
+          ...current,
+          index: current.index + 1,
         },
       };
 
@@ -99,38 +97,47 @@ function quizReducer(state, action) {
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
-          index:
-            state[action.section].index > 0
-              ? state[action.section].index - 1
-              : state[action.section].index,
+          ...current,
+          index: current.index > 0 ? current.index - 1 : current.index,
         },
       };
 
     case 'show_points': {
-      const numQuestions = state[action.section].questions?.length;
+      // const numQuestions = state[action.section].questions?.length;
 
       return {
         ...state,
         [action.section]: {
-          ...state[action.section],
-          index: state[action.section].index + numQuestions,
+          ...current,
+          status: 'finished',
+          // index: state[action.section].index + numQuestions,
         },
       };
     }
 
-    case 'RESTART':
+    case 'RESTART': {
       return {
         ...state,
         [action.section]: {
+          // ...current,
           ...state[action.section],
           index: 0,
           answerIndexes: [],
           userAnswer: [],
           isCorrect: [],
-          secondsremaining: null,
+
+          status: 'active',
+          secondsLeft:
+            state[action.section].questions.length * SECS_PER_QUESTION,
+
+          // secondsLeft: current?.questions?.length * SECS_PER_QUESTION,
+          // secondsLeft:
+          //   state[action.section]?.questions?.length * SECS_PER_QUESTION,
+
+          // status: 'active',
         },
       };
+    }
 
     default:
       throw new Error('Action Unknown');

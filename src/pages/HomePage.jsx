@@ -20,7 +20,6 @@ function HomePage() {
           </Text>
         </Link>
       </Container>
-      <QuestionCard section="section1" />;
     </>
   );
 }
