@@ -9,10 +9,10 @@ import './App.css';
 import ProtectedRoute from './ui/ProtectedRoute.jsx';
 import Header from './ui/Header';
 import AppLayout from './ui/AppLayout.jsx';
-import SectionsScreen from './ui/SectionsScreen';
-import Section1 from './ui/Section1.jsx';
-import Section2 from './ui/Section2.jsx';
-import Section3 from './ui/Section3.jsx';
+// import SectionsScreen from './ui/SectionsScreen';
+// import Section1 from './ui/Section1.jsx';
+// import Section2 from './ui/Section2.jsx';
+// import Section3 from './ui/Section3.jsx';
 
 import ProfilePage from './pages/ProfilePage.jsx';
 import HomePage from './pages/HomePage.jsx';
@@ -53,11 +53,11 @@ function App() {
             <Route path="profile/quiz" element={<QuizPage />} />
             <Route path="profile/quiz/results" element={<ResultPage />} />
 
-            <Route path="sections" element={<SectionsScreen />}>
+            {/* <Route path="sections" element={<SectionsScreen />}>
               <Route path="section1" element={<Section1 />} />
               <Route path="section2" element={<Section2 />} />
               <Route path="section3" element={<Section3 />} />
-            </Route>
+            </Route>*/}
           </Route>
         </Routes>
       </QuizProvider>
