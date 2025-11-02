@@ -1,7 +1,7 @@
-import QuestionCard from './QuestionCard';
+// import QuestionCard from './QuestionCard';
 
-function QuizScreen() {
-  return <QuestionCard section="section1" />;
-}
+// function QuizScreen() {
+//   return <QuestionCard section="section1" />;
+// }
 
-export default QuizScreen;
+// export default QuizScreen;
