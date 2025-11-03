@@ -49,13 +49,15 @@ function QuizPage() {
 
         <div className="flex justify-between mb-10">
           {index ? (
-            <Button
-              style={btnStyleFill}
-              onclick={() => {
-                dispatch({ type: 'show_points', section: section });
-              }}
-            >
-              <Link to={`results?section=${section}`}>End Quiz &rarr; </Link>
+            <Button style={btnStyleFill}>
+              <Link
+                to={`results?section=${section}`}
+                onClick={() => {
+                  dispatch({ type: 'show_points', section });
+                }}
+              >
+                End Quiz &rarr;{' '}
+              </Link>
             </Button>
           ) : (
             ''

@@ -14,35 +14,40 @@ function ResultPage() {
       ? section2
       : section3;
 
-  const { questions, isCorrect, secondsLeft, status } = sectionState;
+  const { questions, isCorrect } = sectionState;
 
   const totalQuestions = questions.length;
   const correcAnswers = isCorrect.filter(Boolean).length;
-  console.log(questions);
-  console.log(secondsLeft, status);
-  console.log(totalQuestions);
-  console.log(correcAnswers);
   return (
     <div className="text-center mt-10">
-      <h2 className="text-3xl font-bold text-purple-700 mb-4">
+      <h2 className="text-3xl font-bold text-blue-600 mb-4">
         🎉 Quiz Completed!{' '}
       </h2>
-      <p className="text-xl mb-2">Section: {section} </p>
+      <p className="text-3xl mb-2 text-blue-600 font-bold">{section} </p>
       <p className="text-lg mb-4 ">
         {' '}
         You answered <strong>{correcAnswers}</strong> out of{' '}
         <strong>{totalQuestions}</strong> correctly.
       </p>
 
-      <Button
-        style="px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold"
+      <Button style="px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold cursor-pointer">
+        <Link
+          to={`/profile/quiz?section=${section}`}
+          onClick={() => {
+            dispatch({ type: 'RESTART', section });
+          }}
+        >
+          Retry Quiz
+        </Link>
+      </Button>
+      <Link
+        to="/profile"
         onClick={() => {
           dispatch({ type: 'RESTART', section });
         }}
       >
-        <Link to={`/profile/quiz?section=${section}`}>Retry Quiz</Link>
-      </Button>
-      <Link to="/profile">back home</Link>
+        back home
+      </Link>
     </div>
   );
 }

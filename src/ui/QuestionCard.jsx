@@ -1,17 +1,20 @@
 // import ScoreBoard from './ScoreBoard';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useQuiz } from '../hooks/useQuiz';
-import { useQuery } from '@tanstack/react-query';
 import { getQuestions } from '../api/questionsAPI';
 import Loader from './Loader';
-import { useEffect } from 'react';
 import Error from './Error';
+import Button from '@/ui/Button';
 
 function QuestionCard({ section }) {
   const { dispatch, ...quizState } = useQuiz();
   const btnStyleOutline =
     'border-1 px-4 py-1 rounded-3xl font-semibold cursor-pointer hover:bg-blue-200 hover:border-blue-200';
-
+  const btnStyleFill =
+    'border-1 px-4 py-2 text-2xl rounded-3xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400';
   const {
     questions,
     index,
@@ -126,12 +129,16 @@ function QuestionCard({ section }) {
                     >
                       &larr; Previous{' '}
                     </button>
-                    <button
-                      onClick={() => dispatch({ type: 'show_points', section })}
-                      className="border-1 px-4 py-1 text-2xl rounded-4xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400"
-                    >
-                      My Score &rarr;{' '}
-                    </button>
+                    <Button style={btnStyleFill}>
+                      <Link
+                        to={`results?section=${section}`}
+                        onClick={() => {
+                          dispatch({ type: 'show_points', section });
+                        }}
+                      >
+                        My Score &rarr;{' '}
+                      </Link>
+                    </Button>
                   </>
                 )}
               </div>

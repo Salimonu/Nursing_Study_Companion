@@ -1,9 +1,8 @@
-import { createContext, useEffect, useReducer } from 'react';
-// import { getQuestions } from '../api/questionsAPI';
-// import { useQuery } from '@tanstack/react-query';
+import { createContext, useReducer } from 'react';
+
 import Loader from '../ui/Loader';
 
-const SECS_PER_QUESTION = 60;
+const SECS_PER_QUESTION = 30;
 
 const sectionState = {
   questions: [],
@@ -43,10 +42,11 @@ function quizReducer(state, action) {
         [action.section]: {
           ...current,
           status: 'active',
-          secondsLeft: current.questions.length * SECS_PER_QUESTION,
+          secondsLeft: current.questions?.length * SECS_PER_QUESTION,
         },
       };
     }
+
     case 'TICK': {
       const newSeconds = Math.max(current?.secondsLeft - 1, 0);
 
@@ -55,7 +55,11 @@ function quizReducer(state, action) {
         [action.section]: {
           ...current,
           secondsLeft: newSeconds,
-          status: newSeconds === 0 ? 'finished' : 'running',
+          status:
+            newSeconds === 0 &&
+            (current.status === 'active' || current.status === 'running')
+              ? 'finished'
+              : 'running',
         },
       };
     }
@@ -103,14 +107,11 @@ function quizReducer(state, action) {
       };
 
     case 'show_points': {
-      // const numQuestions = state[action.section].questions?.length;
-
       return {
         ...state,
         [action.section]: {
           ...current,
           status: 'finished',
-          // index: state[action.section].index + numQuestions,
         },
       };
     }
@@ -119,22 +120,14 @@ function quizReducer(state, action) {
       return {
         ...state,
         [action.section]: {
-          // ...current,
-          ...state[action.section],
+          ...current,
           index: 0,
           answerIndexes: [],
           userAnswer: [],
           isCorrect: [],
 
           status: 'active',
-          secondsLeft:
-            state[action.section].questions.length * SECS_PER_QUESTION,
-
-          // secondsLeft: current?.questions?.length * SECS_PER_QUESTION,
-          // secondsLeft:
-          //   state[action.section]?.questions?.length * SECS_PER_QUESTION,
-
-          // status: 'active',
+          secondsLeft: current.questions?.length * SECS_PER_QUESTION,
         },
       };
     }

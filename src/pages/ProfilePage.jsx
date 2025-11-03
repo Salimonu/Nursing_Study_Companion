@@ -1,6 +1,6 @@
 import Logout from '../features/Authentication/Logout';
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import { Outlet } from 'react-router-dom';
 
@@ -21,7 +21,8 @@ import {
 import { useQuiz } from '@/hooks/useQuiz';
 
 function ProfilePage() {
-  const { dispatch, ...quizState } = useQuiz();
+  const { dispatch } = useQuiz();
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [category, setCategory] = useState(null);
 
@@ -67,9 +68,15 @@ function ProfilePage() {
             <ModalFooter>
               <Button
                 bg="purple.300"
-                onClick={() => dispatch({ type: 'START', section: category })}
+                onClick={() => {
+                  dispatch({ type: 'START', section: category });
+
+                  setTimeout(() => {
+                    navigate(`quiz?section=${category}`);
+                  }, 100);
+                }}
               >
-                <Link to={`quiz?section=${category}`}>Start</Link>
+                Start
               </Button>
               <Button variant="ghost" mr={3} onClick={onClose}>
                 Close
