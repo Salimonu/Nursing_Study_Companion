@@ -1,16 +1,29 @@
 import { Container } from '@chakra-ui/react';
+import Button from './Button';
+import { BsFacebook, BsWhatsapp } from 'react-icons/bs';
 
 function Header() {
   return (
-    // <Container mb="2rem">
+    <>
+      <div className="flex justify-between items-end px-4">
+        <div className="py-3 flex justify-start items-end">
+          <span className="font-bold text-6xl text-blue-800">Q</span>
+          <span className=" text-4xl font-bold text-blue-800">uiz4Nurses</span>
+        </div>
+        <div className="flex justify-between items-center gap-2 py-3">
+          <a
+            href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
+            target="_blank"
+          >
+            <BsWhatsapp size={30} color="#193cb8" />
+          </a>
 
-    <div className="mx-auto w-[60%]">
-      <h1 className="flex justify-between text-center text-4xl pt-4 mb-10 text-blue-800 uppercase">
-        <span className="font-bold">Quiz hub</span>
-        <span>For Nurses</span>
-      </h1>
-    </div>
-    // </Container>
+          <a href="https://www.facebook.com/share/18vYDY7qrE/" target="_blank">
+            <BsFacebook size={30} color="#193cb8" />
+          </a>
+        </div>
+      </div>
+    </>
   );
 }
 
