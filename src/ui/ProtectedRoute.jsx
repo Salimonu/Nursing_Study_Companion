@@ -1,19 +1,15 @@
 import { useUser } from '../features/Authentication/useUser';
 import { Center, Spinner } from '@chakra-ui/react';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import { Navigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
-  const navigate = useNavigate();
   // Load the authenticated user
   const { isPending, isAuthenticated } = useUser();
 
-  useEffect(
-    function () {
-      if (!isAuthenticated) navigate('/homepage', { replace: true });
-    },
-    [navigate, isAuthenticated, isPending]
-  );
+  if (!isPending && !isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
 
   // While loading show a Spinner
   if (isPending)

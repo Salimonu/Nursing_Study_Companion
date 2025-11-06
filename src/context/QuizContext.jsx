@@ -10,7 +10,7 @@ const sectionState = {
   answerIndexes: [],
   userAnswer: [],
   isCorrect: [],
-  secondsLeft: 0,
+  secondsLeft: 1,
   // 'loading', 'error', 'ready', 'active', running, 'finished'
   status: 'loading',
 };

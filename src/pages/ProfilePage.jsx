@@ -33,58 +33,56 @@ function ProfilePage() {
 
   return (
     <>
-      <Container bg="purple.300" w="80%" h="100vh">
-        <p className="uppercase text-4xl text-center mt-20">
-          👋 welcome back - [username]
-        </p>
-        <div className="w-40">
-          <Logout />
-        </div>
-        <p className="text-4xl text-center mt-10 mb-30">
-          TEST your knowledge of <strong> ANATOMY and PHYSIOLOGY </strong>
-        </p>
-        <p className="text-center ">User Performance</p>
-        <p>Categories</p>
+      <div className="flex justify-end mt-4">
+        <Logout />
+      </div>
+      <div className="py-8 px-10">
+        <p className=" text-4xl text-center mb-10">👋 Welcome back</p>
+
+        <p className="text-3xl mb-8">📘 Select a Section</p>
         <Outlet />
-        <div className="flex justify-between">
-          <Button onClick={() => categorySelected('section1')}>
-            Category 1
-          </Button>
+        <div className="flex flex-col gap-6 ">
+          <div
+            className="bg-blue-600 py-6 text-2xl rounded-xl text-center font-semibold text-white"
+            onClick={() => categorySelected('section1')}
+          >
+            {' '}
+            Section 1
+          </div>
           <Button onClick={() => categorySelected('section2')}>
-            Category 2
+            Section 2
           </Button>
           <Button onClick={() => categorySelected('section3')}>
-            Category 3
+            Section 3
           </Button>
         </div>
+      </div>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Ready?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{category} selected.</ModalBody>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Ready?</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>{category} selected.</ModalBody>
+          <ModalFooter>
+            <Button
+              bg="purple.300"
+              onClick={() => {
+                dispatch({ type: 'START', section: category });
 
-            <ModalFooter>
-              <Button
-                bg="purple.300"
-                onClick={() => {
-                  dispatch({ type: 'START', section: category });
-
-                  setTimeout(() => {
-                    navigate(`quiz?section=${category}`);
-                  }, 100);
-                }}
-              >
-                Start
-              </Button>
-              <Button variant="ghost" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Container>
+                setTimeout(() => {
+                  navigate(`quiz?section=${category}`);
+                }, 100);
+              }}
+            >
+              Start
+            </Button>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 }

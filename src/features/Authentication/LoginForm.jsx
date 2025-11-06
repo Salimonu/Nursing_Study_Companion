@@ -18,7 +18,7 @@ function LoginForm() {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+
     reset,
   } = useForm();
 
@@ -33,7 +33,10 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-50 p-8">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="bg-blue-50 border-4 border-blue-600 rounded-2xl p-8"
+    >
       <FormControl>
         <FormLabel>Email address</FormLabel>
         <Input
@@ -42,9 +45,8 @@ function LoginForm() {
           placeholder="Email"
           autoComplete="username"
           disabled={isPending}
+          borderColor="blue"
         />
-
-        <FormHelperText>We'll never share your email.</FormHelperText>
       </FormControl>
 
       <FormControl mt="20px">
@@ -53,14 +55,22 @@ function LoginForm() {
           type="password"
           {...register('password', { required: true })}
           placeholder="password"
+          borderColor="blue"
           disabled={isPending}
         />
-
-        <FormHelperText>Use a strong password.</FormHelperText>
       </FormControl>
 
       <Box>
-        <Button type="submit" w="60%" mt="20px" disabled={isPending}>
+        <Button
+          type="submit"
+          w="60%"
+          mt="20px"
+          bg="blue"
+          _hover={{ bg: 'blue.700' }}
+          textColor="white"
+          fontSize="22px"
+          disabled={isPending}
+        >
           {isPending ? (
             <Box>
               {' '}
@@ -74,6 +84,9 @@ function LoginForm() {
           w="30%"
           ml="20px"
           mt="20px"
+          fontSize="20px"
+          border="solid"
+          borderColor="blue"
           onClick={() => {
             navigate('/homepage');
           }}

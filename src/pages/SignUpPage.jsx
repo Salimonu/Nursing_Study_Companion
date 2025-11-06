@@ -3,9 +3,9 @@ import SignUpForm from '../features/Authentication/SignUpForm';
 
 function SignUpPage() {
   return (
-    <Container width="80vw">
+    <Container width="90vw">
       <div className="text-3xl mt-10 mb-6">
-        <p>SignUp</p>
+        <p>Sign Up for free</p>
       </div>
       <SignUpForm />
     </Container>
