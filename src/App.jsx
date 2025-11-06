@@ -17,6 +17,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import QuizPage from './pages/QuizPage.jsx';
 import ResultPage from './pages/ResultPage.jsx';
 import Footer from './ui/Footer.jsx';
+import PageNotFound from './ui/PageNotFound.jsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,10 +48,11 @@ function App() {
             }
           >
             {/* Protected Routes */}
-            <Route index element={<Navigate replace to="profile" />} />
+            <Route element={<Navigate replace to="profile" />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/quiz" element={<QuizPage />} />
             <Route path="profile/quiz/results" element={<ResultPage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
         <Footer />

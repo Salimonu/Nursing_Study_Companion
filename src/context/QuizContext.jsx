@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 
 import Loader from '../ui/Loader';
 
-const SECS_PER_QUESTION = 30;
+const SECS_PER_QUESTION = 5;
 
 const sectionState = {
   questions: [],
@@ -10,7 +10,7 @@ const sectionState = {
   answerIndexes: [],
   userAnswer: [],
   isCorrect: [],
-  secondsLeft: 1,
+  secondsLeft: 0,
   // 'loading', 'error', 'ready', 'active', running, 'finished'
   status: 'loading',
 };
@@ -48,7 +48,8 @@ function quizReducer(state, action) {
     }
 
     case 'TICK': {
-      const newSeconds = Math.max(current?.secondsLeft - 1, 0);
+      // const newSeconds = Math.max(current?.secondsLeft - 1, 0);
+      const newSeconds = current?.secondsLeft - 1;
 
       return {
         ...state,

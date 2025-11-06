@@ -3,13 +3,13 @@ import Button from './Button';
 
 function Restart({ section }) {
   const { dispatch } = useQuiz();
-  const style =
-    'inline-block cursor-pointer py-2 px-10 bg-red-700 text-white text-2xl font-semibold rounded-3xl hover:bg-red-500';
 
+  const btnStyle =
+    'text-white text-xl px-6 py-2 bg-orange-500 rounded-3xl font-semibold cursor-pointer hover:bg-orange-600';
   return (
     <div className="text-center">
       <Button
-        style={style}
+        style={btnStyle}
         onClick={() => {
           console.log('restart btn clicked');
           dispatch({ type: 'RESTART', section });

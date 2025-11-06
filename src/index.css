@@ -2,3 +2,8 @@
 @import 'swiper/css/pagination';
 
 @import 'tailwindcss';
+
+/* Tailwind overrides Chakra's global border color */
+[class*='border-'] {
+  border-color: revert-layer;
+}

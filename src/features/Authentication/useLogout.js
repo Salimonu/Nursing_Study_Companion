@@ -20,7 +20,7 @@ function useLogout() {
         isClosable: true,
         position: 'top',
       });
-      navigate('/homepage', { replace: true });
+      navigate('/', { replace: true });
     },
   });
 

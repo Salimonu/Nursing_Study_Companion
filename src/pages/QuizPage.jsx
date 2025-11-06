@@ -11,6 +11,7 @@ import Timer from '@/ui/Timer';
 
 function QuizPage() {
   const [searchParams] = useSearchParams();
+
   const section = searchParams.get('section');
   const { dispatch, section1, section2, section3 } = useQuiz();
 
@@ -27,22 +28,24 @@ function QuizPage() {
     'border-1 px-4 py-2 text-2xl rounded-3xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400';
 
   return (
-    // <Container>
-    <div className="mx-auto w-[60%] ">
-      <p className="text-center text-4xl pb-4 text-blue-800 font-bold uppercase">
+    <div className="mx-auto w-[80%] ">
+      <Link to="/">
+        <span className=" text-white bg-orange-400 hover:bg-orange-300 inline-block mt-4 py-2 px-3 rounded-2xl text-2xl font-semibold">
+          Home
+        </span>{' '}
+      </Link>
+      <p className="text-center text-2xl mt-8 pb-4 font-bold uppercase">
         Anatomy and Physiology
       </p>
-      <p className="text-center mb-4 text-4xl font-semibold">{section}</p>
-      <div className="flex justify-between py-2 text-2xl font-semibold">
-        <Link to="/">
-          <span className="hover:underline">Home</span>
-        </Link>
-        <Logout />
+      <p className="text-center mb-4 text-3xl font-semibold uppercase border-2 border-dotted border-blue-700 text-blue-700 py-2 px-4 rounded-2xl">
+        {section}
+      </p>
+      <div className="my-6">
+        <Timer section={section} />
       </div>
-
-      <Timer section={section} />
-
-      <QuestionCard section={section} />
+      <div className="my-6">
+        <QuestionCard section={section} />
+      </div>
 
       <div className="flex justify-between">
         <Restart section={section} />

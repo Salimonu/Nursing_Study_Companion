@@ -16,12 +16,6 @@ function HomePage() {
   if (isAuthenticated) {
     return <Navigate to="/profile" replace />;
   }
-  if (isPending)
-    return (
-      <Center h="100vh">
-        <Spinner size="xl" color="blue.600" />
-      </Center>
-    );
   return (
     <>
       <div className="py-3 px-6 text-center">
@@ -30,13 +24,17 @@ function HomePage() {
           Excel in your nursing exams with Quiz4nurses App. Read, Revise and
           Recall anytime anywhere.
         </p>
-        <Button style="text-3xl text-white bg-blue-600 w-[80%] mx-auto font-semibold bg-blue-400 p-2 rounded-3xl">
-          <Link to="/signup"> Sign up for free </Link>
-        </Button>
+        <Link to="/signup">
+          <Button style="text-3xl text-white bg-blue-600 w-[80%] mx-auto font-semibold bg-blue-400 p-2 rounded-3xl">
+            Sign up for free
+          </Button>
+        </Link>
         <p className="text-2xl mt-4 mb-2">Already have an account?</p>
-        <Button style="text-3xl text-white bg-orange-400 w-[80%] mx-auto font-semibold bg-blue-400 p-2 rounded-3xl">
-          <Link to="/login"> Login </Link>
-        </Button>
+        <Link to="/login">
+          <Button style="text-3xl text-white bg-orange-400 w-[80%] mx-auto font-semibold bg-blue-400 p-2 rounded-3xl">
+            Login
+          </Button>
+        </Link>
         {/* <img src={img} alt="Image of a nurse with stethosocpe and book" /> */}
       </div>
       <div className={quoteStyle}>

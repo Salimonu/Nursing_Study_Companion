@@ -1,6 +1,7 @@
 import Logout from '../features/Authentication/Logout';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 import { Outlet } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ import {
 import { useQuiz } from '@/hooks/useQuiz';
 
 function ProfilePage() {
+  const [sectionOpen, setSectionOpen] = useState(null);
   const { dispatch } = useQuiz();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,6 +33,14 @@ function ProfilePage() {
     onOpen();
   };
 
+  const handleModal = function () {
+    dispatch({ type: 'START', section: category });
+
+    setTimeout(() => {
+      navigate(`quiz?section=${category}`);
+    }, 100);
+  };
+
   return (
     <>
       <div className="flex justify-end mt-4">
@@ -38,46 +48,65 @@ function ProfilePage() {
       </div>
       <div className="py-8 px-10">
         <p className=" text-4xl text-center mb-10">👋 Welcome back</p>
-
-        <p className="text-3xl mb-8">📘 Select a Section</p>
         <Outlet />
-        <div className="flex flex-col gap-6 ">
-          <div
-            className="bg-blue-600 py-6 text-2xl rounded-xl text-center font-semibold text-white"
-            onClick={() => categorySelected('section1')}
-          >
-            {' '}
-            Section 1
+
+        <p
+          className="flex bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer"
+          onClick={() => setSectionOpen(open => !open)}
+        >
+          📖📖 Select a Section{' '}
+          {sectionOpen ? (
+            <BsChevronUp size={28} strokeWidth={1} />
+          ) : (
+            <BsChevronDown size={28} strokeWidth={1} />
+          )}
+        </p>
+        {sectionOpen && (
+          <div className="flex flex-col gap-6">
+            <button
+              className="bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-4 rounded-xl text-3xl font-semibold"
+              onClick={() => categorySelected('section1')}
+            >
+              Section 1
+            </button>
+            <button
+              className="bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-4 rounded-xl text-3xl font-semibold"
+              onClick={() => categorySelected('section2')}
+            >
+              Section 2
+            </button>
+            <button
+              className="bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-4 rounded-xl text-3xl font-semibold"
+              onClick={() => categorySelected('section3')}
+            >
+              Section 3
+            </button>
           </div>
-          <Button onClick={() => categorySelected('section2')}>
-            Section 2
-          </Button>
-          <Button onClick={() => categorySelected('section3')}>
-            Section 3
-          </Button>
-        </div>
+        )}
       </div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Ready?</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>{category} selected.</ModalBody>
+        <ModalContent border="4px" borderRadius="10px" borderColor="blue.400">
+          <ModalHeader fontSize="30px">Ready ?</ModalHeader>
+          <ModalCloseButton _hover={{ bg: 'orange.400', cursor: 'pointer' }} />
+          <ModalBody fontSize="26px" color="blue.600" fontWeight="bold">
+            {category} selected.
+          </ModalBody>
 
           <ModalFooter>
             <Button
-              bg="purple.300"
-              onClick={() => {
-                dispatch({ type: 'START', section: category });
-
-                setTimeout(() => {
-                  navigate(`quiz?section=${category}`);
-                }, 100);
-              }}
+              bg="blue.400"
+              _hover={{ bg: 'blue.600', cursor: 'pointer' }}
+              onClick={handleModal}
             >
               Start
             </Button>
-            <Button variant="ghost" mr={3} onClick={onClose}>
+            <Button
+              variant="ghost"
+              ml={3}
+              _hover={{ bg: 'orange.400', cursor: 'pointer' }}
+              onClick={onClose}
+            >
               Close
             </Button>
           </ModalFooter>

@@ -14,8 +14,8 @@ function Logout() {
           onClick={logout}
           className="bg-orange-400 cursor-pointer hover:bg-orange-500 px-3 rounded-3xl flex items-center"
         >
-          <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />{' '}
           <span className=" text-white text-xl">Log Out</span>{' '}
+          <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />{' '}
         </div>
       )}
     </Box>

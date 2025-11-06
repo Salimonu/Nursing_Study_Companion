@@ -7,7 +7,7 @@ function ProtectedRoute({ children }) {
   // Load the authenticated user
   const { isPending, isAuthenticated } = useUser();
 
-  if (!isPending && !isAuthenticated) {
+  if (!isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 
