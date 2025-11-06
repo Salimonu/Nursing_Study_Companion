@@ -2,7 +2,7 @@ import { createContext, useReducer } from 'react';
 
 import Loader from '../ui/Loader';
 
-const SECS_PER_QUESTION = 5;
+const SECS_PER_QUESTION = 60;
 
 const sectionState = {
   questions: [],
@@ -127,7 +127,7 @@ function quizReducer(state, action) {
           userAnswer: [],
           isCorrect: [],
 
-          status: 'active',
+          status: 'running',
           secondsLeft: current.questions?.length * SECS_PER_QUESTION,
         },
       };

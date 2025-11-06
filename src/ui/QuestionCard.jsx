@@ -1,7 +1,7 @@
-// import ScoreBoard from './ScoreBoard';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { BsSendFill } from 'react-icons/bs';
 
 import { useQuiz } from '../hooks/useQuiz';
 import { getQuestions } from '../api/questionsAPI';
@@ -11,10 +11,12 @@ import Button from '@/ui/Button';
 
 function QuestionCard({ section }) {
   const { dispatch, ...quizState } = useQuiz();
+
   const btnStyleOutline =
-    'border-1 px-4 py-1 rounded-3xl font-semibold cursor-pointer hover:bg-blue-200 hover:border-blue-200';
+    'text-xl border-1 px-4 py-2 rounded-3xl font-semibold cursor-pointer hover:bg-blue-200 hover:border-blue-200';
   const btnStyleFill =
-    'border-1 px-4 py-2 text-2xl rounded-3xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400';
+    'flex gap-1 text-white text-xl px-4 py-2 bg-blue-500 rounded-3xl font-semibold cursor-pointer hover:bg-blue-600';
+
   const {
     questions,
     index,
@@ -33,7 +35,6 @@ function QuestionCard({ section }) {
 
   useEffect(() => {
     if (data)
-      // getQuestions('section').then(data => {}
       dispatch({
         type: 'DATA_RECEIVED',
         section: section,
@@ -47,11 +48,6 @@ function QuestionCard({ section }) {
   return (
     <>
       {index > numQuestions - 1 ? (
-        // <ScoreBoard
-        //   correctCount={correctCount}
-        //   numQuestions={numQuestions}
-        //   section={section}
-        // />
         <div></div>
       ) : (
         <div>
@@ -81,7 +77,7 @@ function QuestionCard({ section }) {
                     i === answerIndexes?.at(index)
                       ? 'bg-blue-500 border-blue-500 text-white font-bold'
                       : ''
-                  } text-left w-[55%] text-xl border-1 pl-4 pr-4 mb-2 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200`}
+                  } text-left w-[80%] text-xl border-1 pl-4 pr-4 my-2 py-2 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200`}
                 >
                   {option}
                 </button>
@@ -91,19 +87,19 @@ function QuestionCard({ section }) {
           <div>
             {answerIndexes !== null ? (
               <div className="flex justify-between items-start">
-                {index < numQuestions - 1 ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        dispatch({
-                          type: 'PREVIOUS_QUESTION',
-                          section: section,
-                        })
-                      }
-                      className={btnStyleOutline}
-                    >
-                      &larr; Previous{' '}
-                    </button>
+                <>
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: 'PREVIOUS_QUESTION',
+                        section: section,
+                      })
+                    }
+                    className={btnStyleOutline}
+                  >
+                    &larr; Previous{' '}
+                  </button>
+                  {index < numQuestions - 1 ? (
                     <button
                       onClick={() =>
                         dispatch({
@@ -113,34 +109,21 @@ function QuestionCard({ section }) {
                       }
                       className={btnStyleOutline}
                     >
-                      Next &rarr;{' '}
+                      Next &rarr;
                     </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={() =>
-                        dispatch({
-                          type: 'PREVIOUS_QUESTION',
-                          section: section,
-                        })
-                      }
-                      className="border-1 px-4 py-1 rounded-4xl cursor-pointer hover:bg-blue-200 hover:border-blue-200"
+                  ) : (
+                    <Link
+                      to={`results?section=${section}`}
+                      onClick={() => {
+                        dispatch({ type: 'show_points', section });
+                      }}
                     >
-                      &larr; Previous{' '}
-                    </button>
-                    <Button style={btnStyleFill}>
-                      <Link
-                        to={`results?section=${section}`}
-                        onClick={() => {
-                          dispatch({ type: 'show_points', section });
-                        }}
-                      >
-                        My Score &rarr;{' '}
-                      </Link>
-                    </Button>
-                  </>
-                )}
+                      <Button style={btnStyleFill}>
+                        Submit <BsSendFill size={22} />
+                      </Button>
+                    </Link>
+                  )}
+                </>
               </div>
             ) : (
               ''

@@ -11,7 +11,7 @@ function HomePage() {
   const { isPending, isAuthenticated } = useUser();
 
   const quoteStyle =
-    'rounded-2xl border-double border-8 bg-[url(@/assets/img/male-nurse-reading.jpg)] bg-cover bg-bottom bg-no-repeat relative text-3xl text-white  h-[300px] w-[90%] mx-auto';
+    'rounded-2xl border-solid border-orange-300 border-6 bg-[url(@/assets/img/male-nurse-reading.jpg)] bg-cover bg-bottom bg-no-repeat relative text-3xl text-white h-[350px] w-[90%] mx-auto';
 
   if (isAuthenticated) {
     return <Navigate to="/profile" replace />;
@@ -35,10 +35,9 @@ function HomePage() {
             Login
           </Button>
         </Link>
-        {/* <img src={img} alt="Image of a nurse with stethosocpe and book" /> */}
       </div>
       <div className={quoteStyle}>
-        <div className="absolute inset-0 bg-blue-900/70">
+        <div className="absolute inset-0 rounded-2xl bg-blue-900/70">
           <Carousel />
         </div>
       </div>

@@ -29,17 +29,16 @@ function ResultPage() {
         You answered <strong>{correcAnswers}</strong> out of{' '}
         <strong>{totalQuestions}</strong> correctly.
       </p>
-
-      <Button style="px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold cursor-pointer">
-        <Link
-          to={`/profile/quiz?section=${section}`}
-          onClick={() => {
-            dispatch({ type: 'RESTART', section });
-          }}
-        >
+      <Link
+        to={`/profile/quiz?section=${section}`}
+        onClick={() => {
+          dispatch({ type: 'RESTART', section });
+        }}
+      >
+        <Button style="px-6 py-3 rounded-2xl bg-blue-600 text-white font-semibold cursor-pointer">
           Retry Quiz
-        </Link>
-      </Button>
+        </Button>
+      </Link>
       <Link
         to="/profile"
         onClick={() => {

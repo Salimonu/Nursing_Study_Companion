@@ -8,6 +8,7 @@ import Logout from '@/features/Authentication/Logout';
 import { useQuiz } from '@/hooks/useQuiz';
 import QuestionCard from '@/ui/QuestionCard';
 import Timer from '@/ui/Timer';
+import { BiStopCircle } from 'react-icons/bi';
 
 function QuizPage() {
   const [searchParams] = useSearchParams();
@@ -24,8 +25,8 @@ function QuizPage() {
 
   const { index } = sectionState;
 
-  const btnStyleFill =
-    'border-1 px-4 py-2 text-2xl rounded-3xl cursor-pointer text-white font-bold bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400';
+  const btnStyle =
+    'flex gap-1 text-white text-xl px-4 py-2 bg-orange-500 rounded-3xl font-semibold cursor-pointer hover:bg-orange-600';
 
   return (
     <div className="mx-auto w-[80%] ">
@@ -52,23 +53,22 @@ function QuizPage() {
 
         <div className="flex justify-between mb-10">
           {index ? (
-            <Button style={btnStyleFill}>
-              <Link
-                to={`results?section=${section}`}
-                onClick={() => {
-                  dispatch({ type: 'show_points', section });
-                }}
-              >
-                End Quiz &rarr;{' '}
-              </Link>
-            </Button>
+            <Link
+              to={`results?section=${section}`}
+              onClick={() => {
+                dispatch({ type: 'show_points', section });
+              }}
+            >
+              <Button style={btnStyle}>
+                End Quiz <BiStopCircle size={28} />
+              </Button>
+            </Link>
           ) : (
             ''
           )}
         </div>
       </div>
     </div>
-    // </Container>
   );
 }
 

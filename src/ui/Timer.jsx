@@ -18,7 +18,7 @@ function Timer({ section }) {
   const { secondsLeft, status } = sectionState;
 
   useEffect(() => {
-    if (status === 'loading') return;
+    if (status === 'loading' || status === 'active') return;
     const tick = setInterval(() => dispatch({ type: 'TICK', section }), 1000);
 
     return () => clearInterval(tick);

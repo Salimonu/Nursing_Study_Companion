@@ -43,12 +43,12 @@ function ProfilePage() {
 
   return (
     <>
-      <div className="flex justify-end mt-4">
+      <div className="flex justify-end mt-4 mr-4">
         <Logout />
       </div>
       <div className="py-8 px-10">
         <p className=" text-4xl text-center mb-10">👋 Welcome back</p>
-        <Outlet />
+        {/* <Outlet /> */}
 
         <p
           className="flex bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer"
@@ -86,7 +86,10 @@ function ProfilePage() {
       </div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent border="4px" borderRadius="10px" borderColor="blue.400">
+        <ModalContent
+          className="border-4 border-blue-600 m-2"
+          borderRadius="10px"
+        >
           <ModalHeader fontSize="30px">Ready ?</ModalHeader>
           <ModalCloseButton _hover={{ bg: 'orange.400', cursor: 'pointer' }} />
           <ModalBody fontSize="26px" color="blue.600" fontWeight="bold">

@@ -22,12 +22,10 @@ export default function Carousel() {
         delay: 6000,
         disableOnInteraction: false, // keeps auto sliding after user interaction
       }}
-      // onSlideChange={() => console.log('slide change')}
-      // onSwiper={swiper => console.log(swiper)}
     >
       {quotes.map((quote, i) => (
         <SwiperSlide key={i}>
-          <p className="relative z-10  p-10">{quote}</p>
+          <p className="relative z-10  p-8">{quote}</p>
         </SwiperSlide>
       ))}
     </Swiper>
