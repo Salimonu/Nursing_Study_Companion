@@ -24,7 +24,7 @@ function Footer() {
         &copy; Copyright @ 2025{' '}
         <a
           className="underline font-semibold"
-          href="https://wa.me/2348101747514"
+          href="https://qmedwebsolutions.netlify.app/"
           target="_blank"
         >
           Qmed Tech Solutions{' '}

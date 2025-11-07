@@ -18,7 +18,7 @@ function HomePage() {
   }
   return (
     <>
-      <div className="py-3 px-6 text-center">
+      <div className="py-3 px-4 text-center">
         <h2 className="text-6xl/16 font-bold mb-5">Master what you learn!</h2>
         <p className="text-2xl mb-4 text-gray-700">
           Excel in your nursing exams with Quiz4nurses App. Read, Revise and

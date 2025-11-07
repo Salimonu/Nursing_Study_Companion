@@ -1,4 +1,4 @@
-function Feedback() {
+function FeedbackPage() {
   return (
     <div className="py-8 px-12 w-[50%] max-w-[600px] rounded-lg bg-blue-50 text-blue-800 mx-auto">
       <form action="">
@@ -103,4 +103,4 @@ function Feedback() {
   );
 }
 
-export default Feedback;
+export default FeedbackPage;

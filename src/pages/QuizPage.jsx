@@ -29,8 +29,13 @@ function QuizPage() {
     'flex gap-1 text-white text-xl px-4 py-2 bg-orange-500 rounded-3xl font-semibold cursor-pointer hover:bg-orange-600';
 
   return (
-    <div className="mx-auto w-[80%] ">
-      <Link to="/">
+    <div className="mx-auto w-[86%] ">
+      <Link
+        to="/"
+        onClick={() => {
+          dispatch({ type: 'RESTART', section });
+        }}
+      >
         <span className=" text-white bg-orange-400 hover:bg-orange-300 inline-block mt-4 py-2 px-3 rounded-2xl text-2xl font-semibold">
           Home
         </span>{' '}

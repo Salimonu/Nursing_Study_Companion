@@ -92,8 +92,8 @@ function ProfilePage() {
         >
           <ModalHeader fontSize="30px">Ready ?</ModalHeader>
           <ModalCloseButton _hover={{ bg: 'orange.400', cursor: 'pointer' }} />
-          <ModalBody fontSize="26px" color="blue.600" fontWeight="bold">
-            {category} selected.
+          <ModalBody className="text-3xl text-blue-800 font-semibold ">
+            {category} selected
           </ModalBody>
 
           <ModalFooter>

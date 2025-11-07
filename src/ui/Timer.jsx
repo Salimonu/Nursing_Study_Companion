@@ -40,13 +40,13 @@ function Timer({ section }) {
   const seconds = secondsLeft % 60;
 
   const btnStyleFill =
-    'flex justify-between border-1 px-4 py-2 text-2xl rounded-3xl text-white font-bold bg-blue-500 border-blue-500';
+    'flex justify-between border-1 pl-4 text-2xl rounded-3xl text-white font-bold bg-blue-500 border-blue-500';
   const day = new Date();
   return (
     <Button style={btnStyleFill}>
       <span>{day.toLocaleString()}</span>
       <span className="bg-white text-blue-800 px-4 rounded-r-3xl">
-        Time Left:{' '}
+        Time Left: <br />
         {`${minutes.toString().padStart(2, 0)} : ${seconds
           .toString()
           .padStart(2, 0)}`}

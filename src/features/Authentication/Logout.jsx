@@ -6,19 +6,25 @@ function Logout() {
   const { logout, isPending } = useLogout();
 
   return (
-    <Box>
+    <div
+      onClick={logout}
+      className="text-white bg-orange-400 cursor-pointer hover:bg-orange-500 px-3 rounded-3xl flex items-center"
+    >
       {isPending ? (
-        <Spinner size="xs" />
+        <p>
+          {' '}
+          <Spinner size="xs" />
+          <span className="  text-xl">Log Out</span>
+          <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />
+        </p>
       ) : (
-        <div
-          onClick={logout}
-          className="bg-orange-400 cursor-pointer hover:bg-orange-500 px-3 rounded-3xl flex items-center"
-        >
+        <p>
+          {' '}
           <span className=" text-white text-xl">Log Out</span>{' '}
           <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />{' '}
-        </div>
+        </p>
       )}
-    </Box>
+    </div>
   );
 }
 
