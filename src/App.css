@@ -1,10 +1,12 @@
 body {
   background-color: #da5acf;
+  background-color: red;
   /* padding: 1rem 1rem; */
 }
 
 @media (max-width: 710px) {
   body {
+    background-color: red;
     /* padding: 0.5rem 0.5rem; */
   }
 }

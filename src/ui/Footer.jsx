@@ -8,7 +8,17 @@ function Footer() {
         <span className="font-bold text-6xl text-blue-800">Q</span>
         <span className=" text-4xl font-bold text-blue-800">uiz4Nurses</span>
       </div>
-      <div className="mx-auto flex items-center justify-center gap-4 py-4 w-[60%] ">
+      <div className="mx-auto flex items-center justify-center gap-4 py-4 w-[90%] ">
+        <p className="text-3xl font-semibold">
+          Join Our{' '}
+          <a
+            href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
+            target="_blank"
+            className="underline"
+          >
+            Community:
+          </a>
+        </p>
         <a
           href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
           target="_blank"

@@ -21,17 +21,7 @@ function ResultPage() {
   const score = (correcAnswers / totalQuestions) * 100;
   return (
     <div className=" px-8">
-      <Link
-        to="/"
-        onClick={() => {
-          dispatch({ type: 'RESTART', section });
-        }}
-      >
-        <span className="text-white mb-8 bg-orange-400 hover:bg-orange-300 inline-block mt-4 py-2 px-3 rounded-2xl text-2xl font-semibold">
-          Home
-        </span>{' '}
-      </Link>
-      <h2 className="text-3xl font-bold text-blue-600 mb-8">
+      <h2 className="text-center text-3xl font-bold text-blue-600 mb-8">
         🎉 Quiz Completed!{' '}
       </h2>
 

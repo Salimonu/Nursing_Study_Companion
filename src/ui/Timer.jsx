@@ -41,10 +41,14 @@ function Timer({ section }) {
 
   const btnStyleFill =
     'flex justify-between border-1 pl-4 text-2xl rounded-3xl text-white font-bold bg-blue-500 border-blue-500';
-  const day = new Date();
+  const locale = navigator.language;
+  const formatedDate = new Date().toLocaleDateString(locale);
   return (
     <Button style={btnStyleFill}>
-      <span>{day.toLocaleString()}</span>
+      <span>
+        {/* Today: <br /> {day.toLocaleString()} */}
+        Today: <br /> {formatedDate}
+      </span>
       <span className="bg-white text-blue-800 px-4 rounded-r-3xl">
         Time Left: <br />
         {`${minutes.toString().padStart(2, 0)} : ${seconds

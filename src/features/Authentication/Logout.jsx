@@ -8,22 +8,55 @@ function Logout() {
   return (
     <div
       onClick={logout}
-      className="text-white bg-orange-400 cursor-pointer hover:bg-orange-500 px-3 rounded-3xl flex items-center"
+      className="cursor-pointer hover:text-shadow-lg hover:text-shadow-blue-300 px-3"
     >
-      {isPending ? (
-        <p>
-          {' '}
-          <Spinner size="xs" />
-          <span className="  text-xl">Log Out</span>
+      <div className="hidden md:block">
+        {isPending ? (
+          <p>
+            {' '}
+            <Spinner size="xs" /> <span className="  text-xl">Log Out</span>
+            <Icon
+              as={FiLogOut}
+              w={8}
+              h={8}
+              color="white"
+              p="8px"
+              boxSize={10}
+            />
+          </p>
+        ) : (
+          <p className="flex items-center">
+            {' '}
+            <span className=" text-white text-xl">Log Out</span>{' '}
+            <Icon
+              as={FiLogOut}
+              w={8}
+              h={8}
+              color="white"
+              p="8px"
+              boxSize={10}
+            />{' '}
+          </p>
+        )}
+      </div>
+      <div className="md:hidden">
+        {isPending ? (
+          <p>
+            {' '}
+            <Spinner size="xs" />
+            <Icon
+              as={FiLogOut}
+              w={8}
+              h={8}
+              color="white"
+              p="8px"
+              boxSize={10}
+            />
+          </p>
+        ) : (
           <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />
-        </p>
-      ) : (
-        <p>
-          {' '}
-          <span className=" text-white text-xl">Log Out</span>{' '}
-          <Icon as={FiLogOut} w={8} h={8} color="white" p="8px" boxSize={10} />{' '}
-        </p>
-      )}
+        )}
+      </div>
     </div>
   );
 }

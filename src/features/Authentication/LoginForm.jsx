@@ -35,7 +35,7 @@ function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-blue-50 border-4 border-blue-600 rounded-2xl p-8"
+      className="bg-blue-50 border-2 border-orange-500 rounded-2xl p-8"
     >
       <FormControl>
         <FormLabel>Email address</FormLabel>

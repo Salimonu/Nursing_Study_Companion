@@ -11,7 +11,8 @@ function useLogout() {
   const { mutate: logout, isPending } = useMutation({
     mutationFn: logoutAPI,
     onSuccess: () => {
-      queryClient.removeQueries();
+      // queryClient.removeQueries();
+      queryClient.invalidateQueries(['user']);
       toast({
         title: 'Logout Successful',
         description: "You're logged out",

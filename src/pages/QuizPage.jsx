@@ -30,16 +30,6 @@ function QuizPage() {
 
   return (
     <div className="mx-auto w-[86%] ">
-      <Link
-        to="/"
-        onClick={() => {
-          dispatch({ type: 'RESTART', section });
-        }}
-      >
-        <span className=" text-white bg-orange-400 hover:bg-orange-300 inline-block mt-4 py-2 px-3 rounded-2xl text-2xl font-semibold">
-          Home
-        </span>{' '}
-      </Link>
       <p className="text-center text-2xl mt-8 pb-4 font-bold uppercase">
         Anatomy and Physiology
       </p>
