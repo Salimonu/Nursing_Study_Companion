@@ -1,11 +1,17 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useQuiz } from '@/hooks/useQuiz';
 import Button from '@/ui/Button';
+import AnswersList from '@/ui/AnswersList';
+
+import { useState } from 'react';
 
 function ResultPage() {
+  const [showAnswers, setShowAnswers] = useState(false);
   const [searchParams] = useSearchParams();
   const section = searchParams.get('section');
   const { dispatch, section1, section2, section3 } = useQuiz();
+  let questions = [];
+  let correctOptions = [];
 
   const sectionState =
     section === 'section1'
@@ -14,11 +20,19 @@ function ResultPage() {
       ? section2
       : section3;
 
-  const { questions, isCorrect } = sectionState;
+  const { questions: questionsObjs, isCorrect, userAnswer } = sectionState;
+  questionsObjs.map((questionObj, i) => {
+    questions[i] = questionObj.question;
+    correctOptions[i] = questionObj.options.at(questionObj.correct_option);
+  });
 
-  const totalQuestions = questions.length;
+  {
+    /* to correct NAN that when divided by 0 */
+  }
+  const totalQuestions = Math.max(questionsObjs.length, 1);
   const correcAnswers = isCorrect.filter(Boolean).length;
   const score = (correcAnswers / totalQuestions) * 100;
+
   return (
     <div className=" px-8">
       <h2 className="text-center text-3xl font-bold text-blue-600 mb-8">
@@ -29,7 +43,9 @@ function ResultPage() {
         {section}
       </p>
       <div className="grid grid-cols-[1fr_auto] justify-items-start gap-x-10 gap-y-4 text-2xl font-semibold mb-8">
-        <span>Total Questions: </span> <span>{totalQuestions}</span>
+        <span>Total Questions: </span>{' '}
+        {/* to correct NAN that when divided by 0 */}
+        <span>{totalQuestions > 1 ? totalQuestions : 0}</span>
         <span>Correct Answers: </span> <span>{correcAnswers}</span>{' '}
         <span>Score:</span>{' '}
         <span className="bg-blue-600 text-white py-1 px-2 rounded-xl font-bold">
@@ -47,6 +63,20 @@ function ResultPage() {
           Retry Quiz
         </Button>
       </Link>
+      <Button
+        style="text-center text-2xl py-2 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-semibold cursor-pointer mt-4"
+        onClick={() => setShowAnswers(ans => !ans)}
+      >
+        Check Answers
+      </Button>
+      {showAnswers && (
+        <AnswersList
+          questions={questions}
+          correctOptions={correctOptions}
+          userAnswer={userAnswer}
+          isCorrect={isCorrect}
+        />
+      )}
     </div>
   );
 }

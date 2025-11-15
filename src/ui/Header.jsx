@@ -48,7 +48,11 @@ function Header({ isOpen, onOpen }) {
             <BsWhatsapp size={30} color="#193cb8" />
           </a>
 
-          <a href="https://www.facebook.com/share/18vYDY7qrE/" target="_blank">
+          <a
+            className="hidden sm:block"
+            href="https://www.facebook.com/share/18vYDY7qrE/"
+            target="_blank"
+          >
             <BsFacebook size={30} color="#193cb8" />
           </a>
         </div>
