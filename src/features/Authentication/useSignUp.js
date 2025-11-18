@@ -15,11 +15,11 @@ export function useSignUp() {
       queryClient.invalidateQueries({
         queryKey: ['user'],
       });
-      
+
       toast({
         title: 'Account successfully created',
         description: 'Pls check your email for confirmation',
-        status: 'success',
+        status: 'info',
         duration: 60000,
         isClosable: true,
         position: 'top',

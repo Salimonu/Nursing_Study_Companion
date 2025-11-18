@@ -1,8 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 
-import img from '@/assets/img/male-nurse-reading.jpg';
-
 export default function Carousel() {
   const quotes = [
     '🩺 “A nurse who reads not only heals others but also strengthens her own mind and spirit.”',

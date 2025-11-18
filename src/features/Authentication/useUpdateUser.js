@@ -12,7 +12,7 @@ export function useUpdateUser() {
       toast({
         title: 'Update successful',
         description: 'Account successfully updated',
-        status: 'success',
+        status: 'info',
         duration: 60000,
         isClosable: true,
         position: 'top',

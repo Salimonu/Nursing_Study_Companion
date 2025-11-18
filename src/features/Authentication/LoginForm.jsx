@@ -66,6 +66,7 @@ function LoginForm() {
           w="60%"
           mt="20px"
           bg="blue"
+          cursor="pointer"
           _hover={{ bg: 'blue.700' }}
           textColor="white"
           fontSize="22px"
@@ -85,6 +86,8 @@ function LoginForm() {
           ml="20px"
           mt="20px"
           fontSize="20px"
+          cursor="pointer"
+          _hover={{ bg: 'blue.700' }}
           border="solid"
           borderColor="blue"
           onClick={() => {

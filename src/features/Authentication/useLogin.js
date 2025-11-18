@@ -15,7 +15,7 @@ export function useLogin() {
       toast({
         title: 'Login Successful',
         description: "You're welcome back",
-        status: 'success',
+        status: 'info',
         duration: 5000,
         isClosable: true,
         position: 'top',

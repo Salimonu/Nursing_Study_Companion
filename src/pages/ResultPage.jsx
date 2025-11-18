@@ -4,6 +4,7 @@ import Button from '@/ui/Button';
 import AnswersList from '@/ui/AnswersList';
 
 import { useState } from 'react';
+import { BsFacebook, BsWhatsapp } from 'react-icons/bs';
 
 function ResultPage() {
   const [showAnswers, setShowAnswers] = useState(false);
@@ -34,7 +35,7 @@ function ResultPage() {
   const score = (correcAnswers / totalQuestions) * 100;
 
   return (
-    <div className=" px-8">
+    <div className="px-8 md:w-[60%] mx-auto">
       <h2 className="text-center text-3xl font-bold text-blue-600 mb-8">
         🎉 Quiz Completed!{' '}
       </h2>
@@ -77,6 +78,30 @@ function ResultPage() {
           isCorrect={isCorrect}
         />
       )}
+
+      {/* links to join community */}
+      <div className="mx-auto flex items-center justify-center gap-4 py-4 w-[90%] ">
+        <p className="text-3xl font-semibold">
+          Join Our{' '}
+          <a
+            href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
+            target="_blank"
+            className="underline"
+          >
+            Community:
+          </a>
+        </p>
+        <a
+          href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
+          target="_blank"
+        >
+          <BsWhatsapp size={30} color="#193cb8" />
+        </a>
+
+        <a href="https://www.facebook.com/share/18vYDY7qrE/" target="_blank">
+          <BsFacebook size={30} color="#193cb8" />
+        </a>
+      </div>
     </div>
   );
 }

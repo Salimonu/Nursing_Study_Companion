@@ -6,7 +6,7 @@ function AnswersList({ questions, correctOptions, userAnswer, isCorrect }) {
       <table>
         <thead>
           <tr className="text-xl">
-            <th>#</th>
+            <th className="text-left">#</th>
             <th>Questions</th>
             <th className="text-blue-700 text-left">Correct answers</th>
             <th className="text-orange-700 text-left">Your answers</th>

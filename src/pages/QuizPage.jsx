@@ -29,7 +29,7 @@ function QuizPage() {
     'flex gap-1 text-white text-xl px-4 py-2 bg-orange-500 rounded-3xl font-semibold cursor-pointer hover:bg-orange-600';
 
   return (
-    <div className="mx-auto w-[86%] ">
+    <div className="mx-auto w-[86%] md:w-[60%] ">
       <p className="text-center text-2xl mt-8 pb-4 font-bold uppercase">
         Anatomy and Physiology
       </p>

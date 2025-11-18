@@ -1,6 +1,7 @@
 import { Spinner } from '@chakra-ui/react';
 import { BsFacebook, BsList, BsWhatsapp, BsXLg } from 'react-icons/bs';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '/quiz4nurses-logo.png';
 
 import { useUser } from '@/features/Authentication/useUser';
 import useLogout from '@/features/Authentication/useLogout';
@@ -15,10 +16,11 @@ function Header({ isOpen, onOpen }) {
         {/* 1st box */}
         <div className="py-3 flex justify-start items-end">
           <Link to="/">
-            <span className="font-bold text-6xl text-blue-800">Q</span>
+            <img src={logo} alt="quiz4nurses logo" className="w-40" />
+            {/* <span className="font-bold text-6xl text-blue-800">Q</span>
             <span className=" text-4xl font-bold text-blue-800">
               uiz4Nurses
-            </span>
+            </span> */}
           </Link>
         </div>
 
@@ -41,7 +43,7 @@ function Header({ isOpen, onOpen }) {
             </a>
           </div>
           <a
-            className="mr-2"
+            className=" mr-2"
             href="https://chat.whatsapp.com/FJLSUX7byyN4bzTB5M0SkY?mode=wwt"
             target="_blank"
           >

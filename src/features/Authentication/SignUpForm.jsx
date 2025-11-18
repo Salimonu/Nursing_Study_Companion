@@ -15,7 +15,6 @@ import { useSignUp } from './useSignUp';
 import { useNavigate } from 'react-router';
 
 function SignUpForm() {
-  const navigate = useNavigate();
   const { signup, isPending } = useSignUp();
 
   const {
@@ -131,6 +130,7 @@ function SignUpForm() {
             w="60%"
             mt="30px"
             bg="blue"
+            cursor="pointer"
             _hover={{ bg: 'blue.700' }}
             textColor="white"
             fontSize="22px"
@@ -151,7 +151,9 @@ function SignUpForm() {
             mt="30px"
             fontSize="20px"
             border="solid"
+            cursor="pointer"
             borderColor="blue"
+            _hover={{ bg: 'blue.700' }}
             onClick={reset}
           >
             Cancel

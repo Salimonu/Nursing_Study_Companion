@@ -16,7 +16,7 @@ function useLogout() {
       toast({
         title: 'Logout Successful',
         description: "You're logged out",
-        status: 'success',
+        status: 'warning',
         duration: 5000,
         isClosable: true,
         position: 'top',
