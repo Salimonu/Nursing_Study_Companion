@@ -1,10 +1,12 @@
+import { useEffect, useRef } from 'react';
+import { Spinner } from '@chakra-ui/react';
+import { BsFacebook, BsLinkedin, BsWhatsapp } from 'react-icons/bs';
+import { NavLink, Link } from 'react-router-dom';
+
 import Logout from '@/features/Authentication/Logout';
 import useLogout from '@/features/Authentication/useLogout';
 import { useUser } from '@/features/Authentication/useUser';
-import { Spinner } from '@chakra-ui/react';
-import { useEffect, useRef } from 'react';
-import { BsFacebook, BsLinkedin, BsWhatsapp } from 'react-icons/bs';
-import { NavLink, Link } from 'react-router-dom';
+import logo from '/quiz4nurses-logo.png';
 
 function Sidebar({ isOpen, closeSideBar }) {
   const { isAuthenticated } = useUser();
@@ -38,12 +40,21 @@ function Sidebar({ isOpen, closeSideBar }) {
         className="sidegrid sidebar fixed z-50 top-0 h-screen w-[70vw] py-3 text-xl bg-blue-50/90 text-blue-800 font-semibold"
       >
         {/* row 1 */}
-        <div className="py-3 flex justify-start items-end">
-          <Link to="/">
+        <div className="pt-3 px-10 flex justify-start items-end">
+          {/* <Link to="/">
             <span className="ml-4 font-bold text-6xl text-blue-800">Q</span>
             <span className=" text-4xl font-bold text-blue-800">
               uiz4Nurses
             </span>
+          </Link> */}
+
+          <Link to="/">
+            <img
+              src={logo}
+              alt="quiz4nurses logo"
+              onClick={closeSideBar}
+              className="w-40"
+            />
           </Link>
         </div>
         {/* row 2 */}

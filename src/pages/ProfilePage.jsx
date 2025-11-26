@@ -70,25 +70,22 @@ function ProfilePage() {
           {sectionOpen && (
             <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
                 onClick={() => categorySelected('section1')}
               >
-                <span>Section 1</span>{' '}
-                <span className="text-lg">10 questions</span>
+                <span>Section 1</span> <span>10 questions</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
                 onClick={() => categorySelected('section2')}
               >
-                <span>Section 2</span>{' '}
-                <span className="text-lg">10 questions</span>
+                <span>Section 2</span> <span>10 questions</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
                 onClick={() => categorySelected('section3')}
               >
-                <span>Section 3</span>{' '}
-                <span className="text-lg">10 questions</span>
+                <span>Section 3</span> <span>10 questions</span>
               </button>
             </div>
           )}
@@ -110,63 +107,63 @@ function ProfilePage() {
           {systemOpen && (
             <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold "
                 // onClick={() => categorySelected('section1')}
               >
                 <span>The cardiovascular system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between bg-white items-end border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section2')}
               >
                 <span>The lymphatic system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between bg-white border-4 items-end border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The nervous system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The endocrine system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The respiratory system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The digestive system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The urinary system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The musculoskeletal system</span>{' '}
                 <span className="text-lg text-orange-600">coming soon</span>
               </button>
               <button
-                className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-3xl font-semibold"
+                className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
                 // onClick={() => categorySelected('section3')}
               >
                 <span>The reproductive system</span>{' '}
