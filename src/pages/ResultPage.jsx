@@ -10,26 +10,67 @@ function ResultPage() {
   const [showAnswers, setShowAnswers] = useState(false);
   const [searchParams] = useSearchParams();
   const section = searchParams.get('section');
-  const { dispatch, section1, section2, section3 } = useQuiz();
+  // const { dispatch, section1, section2, section3 } = useQuiz();
+  const {
+    dispatch,
+    section1,
+    section2,
+    section3,
+    cardiovascular,
+    lymphatic,
+    nervous,
+    endocrine,
+    respiratory,
+    digestive,
+    urinary,
+    musculoskeletal,
+    reproductive,
+  } = useQuiz();
+
   let questions = [];
   let correctOptions = [];
+
+  // const sectionState =
+  //   section === 'section1'
+  //     ? section1
+  //     : section === 'section2'
+  //     ? section2
+  //     : section3;
 
   const sectionState =
     section === 'section1'
       ? section1
       : section === 'section2'
       ? section2
-      : section3;
+      : section === 'section3'
+      ? section3
+      : section === 'cardiovascular'
+      ? cardiovascular
+      : section === 'lymphatic'
+      ? lymphatic
+      : section === 'nervous'
+      ? nervous
+      : section === 'endocrine'
+      ? endocrine
+      : section === 'respiratory'
+      ? respiratory
+      : section === 'digestive'
+      ? digestive
+      : section === 'urinary'
+      ? urinary
+      : section === 'musculoskeletal'
+      ? musculoskeletal
+      : reproductive;
 
   const { questions: questionsObjs, isCorrect, userAnswer } = sectionState;
+
   questionsObjs.map((questionObj, i) => {
     questions[i] = questionObj.question;
     correctOptions[i] = questionObj.options.at(questionObj.correct_option);
   });
 
-  {
-    /* to correct NAN that when divided by 0 */
-  }
+  //  to correct NAN that occurs when divided by 0
+
   const totalQuestions = Math.max(questionsObjs.length, 1);
   const correcAnswers = isCorrect.filter(Boolean).length;
   const score = (correcAnswers / totalQuestions) * 100;

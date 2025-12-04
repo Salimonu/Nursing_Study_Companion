@@ -19,6 +19,15 @@ const initialState = {
   section1: sectionState,
   section2: sectionState,
   section3: sectionState,
+  cardiovascular: sectionState,
+  lymphatic: sectionState,
+  nervous: sectionState,
+  endocrine: sectionState,
+  respiratory: sectionState,
+  digestive: sectionState,
+  urinary: sectionState,
+  musculoskeletal: sectionState,
+  reproductive: sectionState,
 };
 
 function quizReducer(state, action) {
@@ -145,14 +154,43 @@ function quizReducer(state, action) {
 export const QuizContext = createContext();
 
 export function QuizProvider({ children }) {
-  const [{ section1, section2, section3 }, dispatch] = useReducer(
-    quizReducer,
-    initialState
-  );
+  const [
+    {
+      section1,
+      section2,
+      section3,
+      cardiovascular,
+      lymphatic,
+      nervous,
+      endocrine,
+      respiratory,
+      digestive,
+      urinary,
+      musculoskeletal,
+      reproductive,
+    },
+    dispatch,
+  ] = useReducer(quizReducer, initialState);
 
   return (
     <>
-      <QuizContext value={{ section1, section2, section3, dispatch }}>
+      <QuizContext
+        value={{
+          section1,
+          section2,
+          section3,
+          cardiovascular,
+          lymphatic,
+          nervous,
+          endocrine,
+          respiratory,
+          digestive,
+          urinary,
+          musculoskeletal,
+          reproductive,
+          dispatch,
+        }}
+      >
         {children}
       </QuizContext>
     </>

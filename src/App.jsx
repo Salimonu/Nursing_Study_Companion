@@ -63,7 +63,7 @@ function App() {
             >
               {/* Protected Routes */}
 
-              <Route element={<Navigate replace to="profile" />} />
+              {/* <Route element={<Navigate replace to="profile" />} /> */}
               <Route path="profile" element={<ProfilePage />} />
               <Route path="profile/quiz" element={<QuizPage />} />
               <Route path="profile/quiz/results" element={<ResultPage />} />

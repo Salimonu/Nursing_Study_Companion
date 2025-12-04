@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import Button from '@/ui/Button';
 import Restart from '@/ui/Restart';
-import Logout from '@/features/Authentication/Logout';
+// import Logout from '@/features/Authentication/Logout';
 import { useQuiz } from '@/hooks/useQuiz';
 import QuestionCard from '@/ui/QuestionCard';
 import Timer from '@/ui/Timer';
@@ -14,14 +14,46 @@ function QuizPage() {
   const [searchParams] = useSearchParams();
 
   const section = searchParams.get('section');
-  const { dispatch, section1, section2, section3 } = useQuiz();
+  const {
+    dispatch,
+    section1,
+    section2,
+    section3,
+    cardiovascular,
+    lymphatic,
+    nervous,
+    endocrine,
+    respiratory,
+    digestive,
+    urinary,
+    musculoskeletal,
+    reproductive,
+  } = useQuiz();
 
   const sectionState =
     section === 'section1'
       ? section1
       : section === 'section2'
       ? section2
-      : section3;
+      : section === 'section3'
+      ? section3
+      : section === 'cardiovascular'
+      ? cardiovascular
+      : section === 'lymphatic'
+      ? lymphatic
+      : section === 'nervous'
+      ? nervous
+      : section === 'endocrine'
+      ? endocrine
+      : section === 'respiratory'
+      ? respiratory
+      : section === 'digestive'
+      ? digestive
+      : section === 'urinary'
+      ? urinary
+      : section === 'musculoskeletal'
+      ? musculoskeletal
+      : reproductive;
 
   const { index } = sectionState;
 
