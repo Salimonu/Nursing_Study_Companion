@@ -21,6 +21,8 @@ import PageNotFound from './ui/PageNotFound.jsx';
 import About from './ui/About.jsx';
 import { useState } from 'react';
 import Sidebar from './ui/Sidebar.jsx';
+import SystemQuePage from './pages/SystemQuePage.jsx';
+import SubscriptionPage from './pages/SubscriptionPage.jsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,7 +45,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <QuizProvider>
-        <div className="relative">
+        <div className="relative ">
           <Header isOpen={isOpen} onOpen={handleToggle} />
           {isOpen && <Sidebar isOpen={isOpen} closeSideBar={closeSideBar} />}
           <Routes>
@@ -52,6 +54,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignUpPage />} />
+            <Route path="subscribe" element={<SubscriptionPage />} />
             <Route
               element={
                 <AuthSyncWrapper>
@@ -66,6 +69,7 @@ function App() {
               {/* <Route element={<Navigate replace to="profile" />} /> */}
               <Route path="profile" element={<ProfilePage />} />
               <Route path="profile/quiz" element={<QuizPage />} />
+              <Route path="profile/system" element={<SystemQuePage />} />
               <Route path="profile/quiz/results" element={<ResultPage />} />
               <Route path="*" element={<PageNotFound />} />
             </Route>

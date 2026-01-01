@@ -1,10 +1,5 @@
-import Logout from '../features/Authentication/Logout';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-
-import { Outlet } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import {
   Modal,
   ModalOverlay,
@@ -15,94 +10,63 @@ import {
   ModalCloseButton,
   Button,
   useDisclosure,
-  Box,
-  Heading,
 } from '@chakra-ui/react';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+
+import { useSubscriptionStatus } from '@/features/Authentication/useSubscriptionStatus';
 import { useQuiz } from '@/hooks/useQuiz';
-import { useUser } from '@/features/Authentication/useUser';
+import Loader from '@/ui/Loader';
 
-function ProfilePage() {
-  const { user } = useUser();
-  const {
-    user_metadata: { first_name },
-  } = user;
+function SystemQuePage() {
+  const { status, loading, error } = useSubscriptionStatus();
 
-  const [sectionOpen, setSectionOpen] = useState(null);
-
-  const { dispatch } = useQuiz();
-  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [category, setCategory] = useState(null);
-
   const [systemOpen, setSystemOpen] = useState(null);
+  const [category, setCategory] = useState(null);
 
   const categorySelected = num => {
     setCategory(num);
     onOpen();
   };
+  const { dispatch } = useQuiz();
+  const navigate = useNavigate();
 
   const handleModal = function () {
     dispatch({ type: 'START', section: category });
 
     setTimeout(() => {
-      navigate(`quiz?section=${category}`);
+      navigate(`/profile/quiz?section=${category}`);
     }, 100);
   };
 
-  return (
-    <>
-      <div className="md:max-w-[70vw] mx-auto">
-        <p className="text-4xl text-center mt-4 mb-2">
-          👋 Welcome {first_name}
+  if (loading) return <Loader />;
+  if (error) return <p>error!</p>;
+  if (status !== 'subscriber') {
+    return (
+      <div className="w-[60%] min-h-70 my-auto mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
+        <h2 className="text-orange-400 text-4xl font-semibold mb-4">
+          <span className="block">⭐⭐</span> Premium Content
+        </h2>
+        <p className="text-2xl">
+          You need a <strong> subscription </strong> to access system-based
+          questions.
         </p>
-        {/* <div className="py-4 px-10 "></div> */}
-        {/* Section selection */}
+        <button
+          onClick={() => (window.location.href = '/subscribe')}
+          className="bg-orange-400 border-blue-200 border-2 rounded-xl py-3 px-6 font-bold text-lg uppercase text-white mt-4 cursor-pointer hover:bg-orange-500"
+        >
+          Upgrade Now
+        </button>
+      </div>
+    );
+  }
 
+  return (
+    <div>
+      {/* System Selection */}
+      <div className="py-8 px-10 ">
         <p
           className="flex md:w-[50vw] bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto"
-          onClick={() => setSectionOpen(open => !open)}
-        >
-          📖📖 Select a Section{' '}
-          {sectionOpen ? (
-            <BsChevronUp size={28} strokeWidth={1} />
-          ) : (
-            <BsChevronDown size={28} strokeWidth={1} />
-          )}
-        </p>
-        {sectionOpen && (
-          <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
-            <button
-              className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
-              onClick={() => categorySelected('section1')}
-            >
-              <span>Section 1</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
-            </button>
-            <button
-              className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
-              onClick={() => categorySelected('section2')}
-            >
-              <span>Section 2</span>
-              <span className="text-lg text-blue-600">20 questions</span>
-            </button>
-            <button
-              className="flex justify-between bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl md:text-3xl font-semibold"
-              onClick={() => categorySelected('section3')}
-            >
-              <span>Section 3</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
-            </button>
-          </div>
-        )}
-
-        {/* <p className="flex md:w-[50vw] bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto">
-            {' '}
-            📖📖 Select a System
-            <BsChevronDown size={28} strokeWidth={1} />
-          </p> */}
-        {/* <div className="py-8 px-10 "> */}
-        <p
-          className="mt-4 flex md:w-[50vw] bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto"
           onClick={() => setSystemOpen(open => !open)}
         >
           📖📖 Select a System{' '}
@@ -115,85 +79,69 @@ function ProfilePage() {
 
         {systemOpen && (
           <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
-            <Link
-              to="system"
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('cardiovascular')}
+            <button
+              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold "
+              onClick={() => categorySelected('cardiovascular')}
             >
               <span>The cardiovascular system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between bg-white items-end border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('lymphatic')}
             >
               <span>The lymphatic system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between bg-white border-4 items-end border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('nervous')}
+              onClick={() => categorySelected('nervous')}
             >
               <span>The nervous system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('endocrine')}
+              onClick={() => categorySelected('endocrine')}
             >
               <span>The endocrine system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('respiratory')}
+              onClick={() => categorySelected('respiratory')}
             >
               <span>The respiratory system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('digestive')}
+              onClick={() => categorySelected('digestive')}
             >
               <span>The digestive system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('urinary')}
+              onClick={() => categorySelected('urinary')}
             >
               <span>The urinary system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('musculoskeletal')}
+              onClick={() => categorySelected('musculoskeletal')}
             >
               <span>The musculoskeletal system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
-
-            <Link
-              to="system"
+            </button>
+            <button
               className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
-              // onClick={() => categorySelected('reproductive')}
+              onClick={() => categorySelected('reproductive')}
             >
               <span>The reproductive system</span>{' '}
               <span className="text-lg text-blue-600">20 questions</span>
-            </Link>
+            </button>
           </div>
         )}
 
@@ -234,8 +182,8 @@ function ProfilePage() {
           </ModalContent>
         </Modal>
       </div>
-    </>
+    </div>
   );
 }
 
-export default ProfilePage;
+export default SystemQuePage;

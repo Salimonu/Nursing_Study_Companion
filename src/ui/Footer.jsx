@@ -6,7 +6,7 @@ import logo from '/quiz4nurses-logo.png';
 
 function Footer() {
   return (
-    <div className="bg-blue-200 p-4 mt-8 ">
+    <div className="bg-blue-200 p-4 mt-8">
       <div className="md:flex">
         <Link to="/">
           <img src={logo} alt="quiz4nurses logo" className="mx-auto w-60" />
