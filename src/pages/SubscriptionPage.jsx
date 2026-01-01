@@ -15,7 +15,8 @@ function SubscriptionPage() {
           💶 Price: <span className="line-through">#2000</span> <br />
           🎉 Enjoy 50% discount: New Price = <strong>#1000</strong> <br /> 📆{' '}
           <span className="text-orange-600">
-            PROMO ends in 3days <FakePromoCountdown />{' '}
+            PROMO ends in <strong> 3days</strong>
+            <FakePromoCountdown />{' '}
           </span>
         </p>
         <p className="text-center mt-10 mb-6 text-white bg-blue-500 font-semibold px-8 py-6 rounded-2xl">
