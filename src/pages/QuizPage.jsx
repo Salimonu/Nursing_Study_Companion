@@ -6,7 +6,7 @@ import Button from '@/ui/Button';
 import Restart from '@/ui/Restart';
 // import Logout from '@/features/Authentication/Logout';
 import { useQuiz } from '@/hooks/useQuiz';
-import QuestionCard from '@/ui/QuestionCard';
+import QuestionCard from '@/features/Questions/QuestionCard';
 import Timer from '@/ui/Timer';
 import { BiStopCircle } from 'react-icons/bi';
 

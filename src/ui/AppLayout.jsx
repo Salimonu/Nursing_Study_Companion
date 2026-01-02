@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 function AppLayout() {
   return (
-    <div className="min-h-90 flex flex-col justify-center">
+    <div className="min-h-90">
       <Outlet />
     </div>
   );

@@ -1,7 +1,15 @@
+{
+  /* <div className="min-h-90 flex flex-col justify-center">
+      <div className="overflow-x-auto mt-2 p-6">large content</div> 
+    </div>
+
+the large content is expanding beyond the container */
+}
+
 function AnswersList({ questions, correctOptions, userAnswer, isCorrect }) {
   console.log(isCorrect);
   return (
-    <div className="overflow-x-auto mt-2 p-6">
+    <div className="overflow-auto mt-2 p-6">
       {/* questions */}
       <table>
         <thead>

@@ -1,6 +1,6 @@
 function Loader() {
   return (
-    <div className="pl-10 text-3xl text-blue-800 font-semibold">
+    <div className="mt-20 pl-10 text-3xl text-blue-800 font-semibold">
       🔃 Loading questions, pls wait...
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {
   Modal,
@@ -13,12 +14,13 @@ import {
 } from '@chakra-ui/react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
-import { useSubscriptionStatus } from '@/features/Authentication/useSubscriptionStatus';
+import { useSubscriptionStatus } from '@/features/Subscription/useSubscriptionStatus';
 import { useQuiz } from '@/hooks/useQuiz';
 import Loader from '@/ui/Loader';
+import Error from '@/ui/Error';
 
-function SystemQuePage() {
-  const { status, loading, error } = useSubscriptionStatus();
+function SystemQuetions() {
+  const { status, loading, statusError } = useSubscriptionStatus();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [systemOpen, setSystemOpen] = useState(null);
@@ -40,23 +42,23 @@ function SystemQuePage() {
   };
 
   if (loading) return <Loader />;
-  if (error) return <p>error!</p>;
+  if (statusError) return <Error value={'questions'} />;
   if (status !== 'subscriber') {
     return (
-      <div className="w-[60%] min-h-70 my-auto mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
+      <div className="w-[80%] md:w-[60%] min-h-70 mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
         <h2 className="text-orange-400 text-4xl font-semibold mb-4">
           <span className="block">⭐⭐</span> Premium Content
         </h2>
         <p className="text-2xl">
-          You need a <strong> subscription </strong> to access system-based
-          questions.
+          UPGRADE to PREMIUM version to have <strong> UNLIMITED ACCESS</strong>{' '}
+          to ALL the system-based questions.
         </p>
-        <button
-          onClick={() => (window.location.href = '/subscribe')}
-          className="bg-orange-400 border-blue-200 border-2 rounded-xl py-3 px-6 font-bold text-lg uppercase text-white mt-4 cursor-pointer hover:bg-orange-500"
+        <Link
+          to="/subscribe"
+          className="block text-center bg-orange-400 border-blue-200 border-2 rounded-xl py-3 px-6 font-bold text-lg uppercase text-white mt-6 cursor-pointer hover:bg-orange-500"
         >
           Upgrade Now
-        </button>
+        </Link>
       </div>
     );
   }
@@ -186,4 +188,4 @@ function SystemQuePage() {
   );
 }
 
-export default SystemQuePage;
+export default SystemQuetions;

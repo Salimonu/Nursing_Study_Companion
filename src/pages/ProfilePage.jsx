@@ -26,14 +26,13 @@ function ProfilePage() {
   const {
     user_metadata: { first_name },
   } = user;
-
-  const [sectionOpen, setSectionOpen] = useState(null);
-
   const { dispatch } = useQuiz();
-  const navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [category, setCategory] = useState(null);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const navigate = useNavigate();
+  const [sectionOpen, setSectionOpen] = useState(null);
+  const [category, setCategory] = useState(null);
   const [systemOpen, setSystemOpen] = useState(null);
 
   const categorySelected = num => {
@@ -51,13 +50,12 @@ function ProfilePage() {
 
   return (
     <>
-      <div className="md:max-w-[70vw] mx-auto">
-        <p className="text-4xl text-center mt-4 mb-2">
+      <div className="md:max-w-[70vw] mx-auto px-10">
+        <p className="text-4xl text-center mt-4 mb-12">
           👋 Welcome {first_name}
         </p>
-        {/* <div className="py-4 px-10 "></div> */}
-        {/* Section selection */}
 
+        {/* Section selection */}
         <p
           className="flex md:w-[50vw] bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto"
           onClick={() => setSectionOpen(open => !open)}

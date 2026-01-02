@@ -1,8 +1,8 @@
-import { createContext, useReducer } from 'react';
+import { useReducer } from 'react';
 
+import { QuizContext } from './createContext';
+import { SECS_PER_QUESTION } from '@/utils/constants';
 import Loader from '../ui/Loader';
-
-const SECS_PER_QUESTION = 30;
 
 const sectionState = {
   questions: [],
@@ -150,8 +150,6 @@ function quizReducer(state, action) {
       throw new Error('Action Unknown');
   }
 }
-
-export const QuizContext = createContext();
 
 export function QuizProvider({ children }) {
   const [

@@ -21,13 +21,16 @@ import PageNotFound from './ui/PageNotFound.jsx';
 import About from './ui/About.jsx';
 import { useState } from 'react';
 import Sidebar from './ui/Sidebar.jsx';
-import SystemQuePage from './pages/SystemQuePage.jsx';
+import SystemQuePage from './features/Questions/SystemQuetions.jsx';
 import SubscriptionPage from './pages/SubscriptionPage.jsx';
+import { RETRY, STALE_TIME } from './utils/constants.js';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000,
+      staleTime: STALE_TIME,
+      retry: RETRY,
+      retryDelay: 2000,
     },
   },
 });
@@ -65,8 +68,6 @@ function App() {
               }
             >
               {/* Protected Routes */}
-
-              {/* <Route element={<Navigate replace to="profile" />} /> */}
               <Route path="profile" element={<ProfilePage />} />
               <Route path="profile/quiz" element={<QuizPage />} />
               <Route path="profile/system" element={<SystemQuePage />} />

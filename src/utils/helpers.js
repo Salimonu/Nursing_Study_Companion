@@ -6,3 +6,15 @@ export const formatTime = ms => {
 
   return { days, hours, minutes, seconds };
 };
+
+export const supabaseQuery = async (queryFn, timeout = 15000) => {
+  const controller = new AbortController();
+
+  const idTimeout = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    return await queryFn(controller.signal);
+  } finally {
+    clearTimeout(idTimeout);
+  }
+};

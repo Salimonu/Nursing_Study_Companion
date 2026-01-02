@@ -30,13 +30,6 @@ function ResultPage() {
   let questions = [];
   let correctOptions = [];
 
-  // const sectionState =
-  //   section === 'section1'
-  //     ? section1
-  //     : section === 'section2'
-  //     ? section2
-  //     : section3;
-
   const sectionState =
     section === 'section1'
       ? section1

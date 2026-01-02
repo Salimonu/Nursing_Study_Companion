@@ -1,15 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BsSendFill } from 'react-icons/bs';
 
-import { useQuiz } from '../hooks/useQuiz';
-import { getQuestions } from '../api/questionsAPI';
-import Loader from './Loader';
-import Error from './Error';
+import useQuestions from './useQuestions';
+import { useQuiz } from '../../hooks/useQuiz';
+import Loader from '../../ui/Loader';
+import Error from '../../ui/Error';
 import Button from '@/ui/Button';
 
 function QuestionCard({ section }) {
+  const { isLoading, data, error } = useQuestions({ section });
   const { dispatch, ...quizState } = useQuiz();
 
   const btnStyleOutline =
@@ -22,16 +22,11 @@ function QuestionCard({ section }) {
     index,
     answerIndexes,
 
-    isCorrect,
+    // isCorrect,
   } = quizState[section];
 
-  const correctCount = isCorrect.filter(ans => ans === true).length;
+  // const correctCount = isCorrect.filter(ans => ans === true).length;
   const numQuestions = questions.length;
-
-  const { isLoading, data, error } = useQuery({
-    queryKey: ['questions', section],
-    queryFn: () => getQuestions(section),
-  });
 
   useEffect(() => {
     if (data)
@@ -44,7 +39,7 @@ function QuestionCard({ section }) {
 
   if (isLoading) return <Loader />;
 
-  if (error) return <Error />;
+  if (error) return <Error value={'questions'} />;
   return (
     <>
       <div>
