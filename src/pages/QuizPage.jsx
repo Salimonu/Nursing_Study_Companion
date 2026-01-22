@@ -28,6 +28,17 @@ function QuizPage() {
     urinary,
     musculoskeletal,
     reproductive,
+    medsurg_cardio,
+    medsurg,
+    medsurg_respiratory,
+    medsurg_endocrine,
+    medsurg_electrolyte,
+    medsurg_neurological,
+    medsurg_urinary,
+    medsurg_gastrointestinal,
+    medsurg_musculoskeletal,
+    medsurg_immune,
+    medsurg_Infection_control,
   } = useQuiz();
 
   const sectionState =
@@ -53,7 +64,29 @@ function QuizPage() {
       ? urinary
       : section === 'musculoskeletal'
       ? musculoskeletal
-      : reproductive;
+      : section === 'reproductive'
+      ? reproductive
+      : section === 'medsurg'
+      ? medsurg
+      : section === 'medsurg_respiratory'
+      ? medsurg_respiratory
+      : section === 'medsurg_endocrine'
+      ? medsurg_endocrine
+      : section === 'medsurg_electrolyte'
+      ? medsurg_electrolyte
+      : section === 'medsurg_neurological'
+      ? medsurg_neurological
+      : section === 'medsurg_urinary'
+      ? medsurg_urinary
+      : section === 'medsurg_gastrointestinal'
+      ? medsurg_gastrointestinal
+      : section === 'medsurg_musculoskeletal'
+      ? medsurg_musculoskeletal
+      : section === 'medsurg_immune'
+      ? medsurg_immune
+      : section === 'medsurg_Infection_control'
+      ? medsurg_Infection_control
+      : medsurg_cardio;
 
   const { index } = sectionState;
 

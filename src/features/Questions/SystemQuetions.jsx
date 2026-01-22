@@ -23,7 +23,10 @@ function SystemQuetions() {
   const { status, loading, statusError } = useSubscriptionStatus();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [systemOpen, setSystemOpen] = useState(null);
+
+  const [systemOpen, setSystemOpen] = useState(false);
+  const [medsurgOpen, setMedsurgOpen] = useState(false);
+
   const [category, setCategory] = useState(null);
 
   const categorySelected = num => {
@@ -64,85 +67,178 @@ function SystemQuetions() {
   }
 
   return (
-    <div>
+    <>
       {/* System Selection */}
       <div className="py-8 px-10 ">
         <p
           className="flex md:w-[50vw] bg-blue-500 hover:bg-blue-600 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto"
-          onClick={() => setSystemOpen(open => !open)}
+          onClick={() => {
+            setSystemOpen(open => !open);
+            setMedsurgOpen(false)
+          }}
         >
-          📖📖 Select a System{' '}
+          📖📖 Anatomy Physio Questions{' '}
           {systemOpen ? (
             <BsChevronUp size={28} strokeWidth={1} />
           ) : (
             <BsChevronDown size={28} strokeWidth={1} />
           )}
         </p>
-
         {systemOpen && (
           <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold "
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold "
               onClick={() => categorySelected('cardiovascular')}
             >
               <span>The cardiovascular system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between bg-white items-end border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between bg-white items-end border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('lymphatic')}
             >
               <span>The lymphatic system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between bg-white border-4 items-end border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between bg-white border-2 items-end border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('nervous')}
             >
               <span>The nervous system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('endocrine')}
             >
               <span>The endocrine system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('respiratory')}
             >
               <span>The respiratory system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('digestive')}
             >
               <span>The digestive system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('urinary')}
             >
               <span>The urinary system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('musculoskeletal')}
             >
               <span>The musculoskeletal system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
             </button>
             <button
-              className="flex justify-between items-end bg-white border-4 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              className="flex justify-between items-end bg-white border-2 border-blue-600 hover:text-white hover:bg-blue-500 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
               onClick={() => categorySelected('reproductive')}
             >
               <span>The reproductive system</span>{' '}
-              <span className="text-lg text-blue-600">20 questions</span>
+              <span className="text-lg text-blue-600"></span>
+            </button>
+          </div>
+        )}
+
+        {/* <div className="py-8 px-10 "> */}
+        <p
+          className="flex md:w-[50vw] bg-orange-400 hover:bg-orange-500 py-4 px-6 text-2xl rounded-xl items-center justify-between font-semibold text-white cursor-pointer mx-auto mt-4"
+          onClick={() => {
+            setMedsurgOpen(open => !open);
+            setSystemOpen(false);
+          }}
+        >
+          📖📖 Med Surg Questions{' '}
+          {medsurgOpen ? (
+            <BsChevronUp size={28} strokeWidth={1} />
+          ) : (
+            <BsChevronDown size={28} strokeWidth={1} />
+          )}
+        </p>
+        {medsurgOpen && (
+          <div className="flex flex-col gap-6 md:w-[50vw] mx-auto">
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer mt-6 py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold "
+              onClick={() => categorySelected('medsurg_cardio')}
+            >
+              <span>The Cardiovascular Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between bg-white items-end border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_respiratory')}
+            >
+              <span>The Respiratory Nursing </span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between bg-white border-2 items-end border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_endocrine')}
+            >
+              <span>
+                The Endocrine Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_electrolyte')}
+            >
+              <span>The Fluid & Electrolytes </span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_neurological')}
+            >
+              <span>The Neurological Nursing </span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_urinary')}
+            >
+              <span>The Renal & urinary Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_gastrointestinal')}
+            >
+              <span>The Gastrointestinal Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_musculoskeletal')}
+            >
+              <span>The Muskuloskeletal Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_immune')}
+            >
+              <span>The Hematologic immune Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
+            </button>
+            <button
+              className="flex justify-between items-end bg-white border-2 border-orange-400 hover:text-white hover:bg-orange-400 cursor-pointer py-1 px-8 rounded-xl text-xl/tight md:text-3xl font-semibold"
+              onClick={() => categorySelected('medsurg_Infection_control')}
+            >
+              <span>The Infection Control Nursing</span>{' '}
+              <span className="text-lg text-blue-600"></span>
             </button>
           </div>
         )}
@@ -151,7 +247,7 @@ function SystemQuetions() {
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent
-            className="border-4 border-blue-600 m-2"
+            className="border-2 border-blue-600 m-2"
             borderRadius="10px"
           >
             <ModalHeader fontSize="30px">Anatomy and Physiology</ModalHeader>
@@ -184,7 +280,8 @@ function SystemQuetions() {
           </ModalContent>
         </Modal>
       </div>
-    </div>
+      {/* </div> */}
+    </>
   );
 }
 

@@ -6,8 +6,13 @@
 the large content is expanding beyond the container */
 }
 
-function AnswersList({ questions, correctOptions, userAnswer, isCorrect }) {
-  console.log(isCorrect);
+function AnswersList({
+  questions,
+  correctOptions,
+  userAnswer,
+  isCorrect,
+  rationales,
+}) {
   return (
     <div className="overflow-auto mt-2 p-6">
       {/* questions */}
@@ -17,8 +22,9 @@ function AnswersList({ questions, correctOptions, userAnswer, isCorrect }) {
             <th className="text-left">#</th>
             <th>Questions</th>
             <th className="text-blue-700 text-left">Correct answers</th>
+            <th className="text-blue-700 text-left">Rationales</th>
             <th className="text-orange-700 text-left">Your answers</th>
-            <th>Score</th>
+            <th>Remarks</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +33,9 @@ function AnswersList({ questions, correctOptions, userAnswer, isCorrect }) {
               <td className="pr-4">{index + 1}</td>
               <td className="pr-6 py-4 md:py-1">{question}</td>
               <td className="pr-6">{correctOptions[index]}</td>
+              <td className="pr-6">
+                {rationales[index] ? rationales[index] : 'none'}
+              </td>
               <td className="pr-6">
                 {userAnswer[index] ? userAnswer[index] : 'none'}
               </td>

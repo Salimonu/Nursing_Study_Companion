@@ -25,10 +25,22 @@ function ResultPage() {
     urinary,
     musculoskeletal,
     reproductive,
+    medsurg_cardio,
+    medsurg,
+    medsurg_respiratory,
+    medsurg_endocrine,
+    medsurg_electrolyte,
+    medsurg_neurological,
+    medsurg_urinary,
+    medsurg_gastrointestinal,
+    medsurg_musculoskeletal,
+    medsurg_immune,
+    medsurg_Infection_control,
   } = useQuiz();
 
   let questions = [];
   let correctOptions = [];
+  let rationales = [];
 
   const sectionState =
     section === 'section1'
@@ -53,20 +65,43 @@ function ResultPage() {
       ? urinary
       : section === 'musculoskeletal'
       ? musculoskeletal
-      : reproductive;
+      : section === 'reproductive'
+      ? reproductive
+      : section === 'medsurg'
+      ? medsurg
+      : section === 'medsurg_respiratory'
+      ? medsurg_respiratory
+      : section === 'medsurg_endocrine'
+      ? medsurg_endocrine
+      : section === 'medsurg_electrolyte'
+      ? medsurg_electrolyte
+      : section === 'medsurg_neurological'
+      ? medsurg_neurological
+      : section === 'medsurg_urinary'
+      ? medsurg_urinary
+      : section === 'medsurg_gastrointestinal'
+      ? medsurg_gastrointestinal
+      : section === 'medsurg_musculoskeletal'
+      ? medsurg_musculoskeletal
+      : section === 'medsurg_immune'
+      ? medsurg_immune
+      : section === 'medsurg_Infection_control'
+      ? medsurg_Infection_control
+      : medsurg_cardio;
 
   const { questions: questionsObjs, isCorrect, userAnswer } = sectionState;
 
   questionsObjs.map((questionObj, i) => {
     questions[i] = questionObj.question;
     correctOptions[i] = questionObj.options.at(questionObj.correct_option);
+    rationales[i] = questionObj.rationales;
   });
 
   //  to correct NAN that occurs when divided by 0
 
   const totalQuestions = Math.max(questionsObjs.length, 1);
   const correcAnswers = isCorrect.filter(Boolean).length;
-  const score = (correcAnswers / totalQuestions) * 100;
+  const score = Math.ceil((correcAnswers / totalQuestions) * 100);
 
   return (
     <div className="px-8 md:w-[60%] mx-auto">
@@ -110,6 +145,7 @@ function ResultPage() {
           correctOptions={correctOptions}
           userAnswer={userAnswer}
           isCorrect={isCorrect}
+          rationales={rationales}
         />
       )}
 

@@ -1,0 +1,23 @@
+# generate questions (50que/section) for supabase
+  1- AnatomyPhysiology 
+  2- MedSurg  
+  3- Pharmarcology
+  General section = 50questions
+  Specific section = 50questions each
+# upload questions to supabase table
+# query the table from the supabase JS client
+# Design a captivating UI
+
+
+----------------------------------------
+
+
+# Create a dashboard (old profile)
+  # Add cards
+    - Anatomy & Physiology
+      1- General
+      2- System-based
+
+    - Medsurg
+      1- General
+      2- Specific
