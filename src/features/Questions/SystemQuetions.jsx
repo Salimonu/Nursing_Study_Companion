@@ -20,7 +20,8 @@ import Loader from '@/ui/Loader';
 import Error from '@/ui/Error';
 
 function SystemQuetions() {
-  const { status, loading, statusError } = useSubscriptionStatus();
+  const { subscriptionStatus, expiresAt, loading, statusError } = useSubscriptionStatus();
+  const isExpired = expiresAt && new Date(expiresAt) < new Date();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -46,7 +47,7 @@ function SystemQuetions() {
 
   if (loading) return <Loader />;
   if (statusError) return <Error value={'questions'} />;
-  if (status !== 'subscriber') {
+  if (subscriptionStatus !== 'active' || isExpired) {
     return (
       <div className="w-[80%] md:w-[60%] min-h-70 mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
         <h2 className="text-orange-400 text-4xl font-semibold mb-4">
@@ -54,7 +55,7 @@ function SystemQuetions() {
         </h2>
         <p className="text-2xl">
           UPGRADE to PREMIUM version to have <strong> UNLIMITED ACCESS</strong>{' '}
-          to ALL the system-based questions.
+          to ALL questions.
         </p>
         <Link
           to="/subscribe"
@@ -64,6 +65,25 @@ function SystemQuetions() {
         </Link>
       </div>
     );
+  }
+
+  if (subscriptionStatus === 'active' && isExpired) {
+    return (
+      <div className="w-[80%] md:w-[60%] min-h-70 mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
+        <h2 className="text-orange-400 text-4xl font-semibold mb-4">
+          <span className="block">⭐⭐</span> Premium Content
+        </h2>
+        <p className="text-2xl">
+          ❤️ Dear, pls RENEW your subscription to have <strong> UNLIMITED ACCESS</strong>{' '}
+          to ALL questions.
+        </p>
+        <Link
+          to="/subscribe"
+          className="block text-center bg-orange-400 border-blue-200 border-2 rounded-xl py-3 px-6 font-bold text-lg uppercase text-white mt-6 cursor-pointer hover:bg-orange-500"
+        >
+          Upgrade Now
+        </Link>
+      </div>)    
   }
 
   return (

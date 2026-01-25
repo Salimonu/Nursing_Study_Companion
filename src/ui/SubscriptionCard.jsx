@@ -17,7 +17,7 @@ const SubscriptionCard = ({title, price, promo, bg}) => {
             <p className="flex gap-1 mb-2">
               <span>🎉 </span>{' '}
               <span>
-                Enjoy 50% discount: Promo = <strong>{promo}</strong>
+                Enjoy 50% discount: <br /> Promo = <strong>{promo}</strong>
               </span>
             </p>
             {/* <p className="flex gap-1 mb-2">📆{' '} */}
