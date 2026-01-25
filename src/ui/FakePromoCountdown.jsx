@@ -28,11 +28,11 @@ function FakePromoCountdown() {
   const { days, hours, minutes, seconds } = formatTime(timeLeft);
 
   return (
-    <div className="flex flex-wrap gap-4 text-center ml-12">
+    <div className="flex flex-wrap gap-4 text-center ">
       <TimeBox label="Days" value={days} />
-      <TimeBox label="Hours" value={hours} />
-      <TimeBox label="Minutes" value={minutes} />
-      <TimeBox label="Seconds" value={seconds} />
+      <TimeBox label="Hrs" value={hours} />
+      <TimeBox label="Mins" value={minutes} />
+      <TimeBox label="Secs" value={seconds} />
     </div>
   );
 }
