@@ -47,7 +47,8 @@ function SystemQuetions() {
 
   if (loading) return <Loader />;
   if (statusError) return <Error value={'questions'} />;
-  if (subscriptionStatus !== 'active' || isExpired) {
+
+  if (subscriptionStatus !== 'active') {
     return (
       <div className="w-[80%] md:w-[60%] min-h-70 mx-auto bg-blue-50 border-2 border-orange-500 rounded-2xl p-10">
         <h2 className="text-orange-400 text-4xl font-semibold mb-4">
